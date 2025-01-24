@@ -49,6 +49,8 @@ var dialogue_line: DialogueLine:
 
 @onready var ballon_list_container = %BallonListContainer
 
+@onready var main_dialogue: Panel = %MainDialogue
+
 func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
@@ -56,7 +58,6 @@ func _ready() -> void:
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():
 		responses_menu.next_action = next_action
-
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
@@ -108,6 +109,7 @@ func apply_dialogue_line(next_dialogue_line: DialogueLine) -> void:
 
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
+		main_dialogue.custom_minimum_size.y = 50 * (dialogue_line.text.length() / 34 + 1)
 		dialogue_label.type_out()
 		await dialogue_label.finished_typing
 

@@ -110,6 +110,7 @@ fit_content = true
 scroll_active = false
 
 [node name="MainDialogue" type="Panel" parent="Balloon/MarginContainer/BallonListContainer"]
+unique_name_in_owner = true
 clip_children = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
