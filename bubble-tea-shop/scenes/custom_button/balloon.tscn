@@ -67,7 +67,10 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 layer = 100
 script = ExtResource("1_36de5")
 
-[node name="Balloon" type="Control" parent="."]
+[node name="2DPosition" type="Node2D" parent="."]
+position = Vector2(240, 39)
+
+[node name="Balloon" type="Control" parent="2DPosition"]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -77,18 +80,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
 
-[node name="MarginContainer" type="MarginContainer" parent="Balloon"]
+[node name="MarginContainer" type="MarginContainer" parent="2DPosition/Balloon"]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -226.0
-offset_right = 224.0
+offset_left = -225.0
+offset_right = 225.0
+offset_bottom = 239.0
 grow_horizontal = 2
-grow_vertical = 2
 
-[node name="BallonListContainer" type="VBoxContainer" parent="Balloon/MarginContainer"]
+[node name="BallonListContainer" type="VBoxContainer" parent="2DPosition/Balloon/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -96,7 +98,7 @@ size_flags_vertical = 0
 theme_override_constants/separation = 20
 alignment = 2
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/BallonListContainer"]
+[node name="CharacterLabel" type="RichTextLabel" parent="2DPosition/Balloon/MarginContainer/BallonListContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
@@ -109,14 +111,14 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="MainDialogue" type="Panel" parent="Balloon/MarginContainer/BallonListContainer"]
+[node name="MainDialogue" type="Panel" parent="2DPosition/Balloon/MarginContainer/BallonListContainer"]
 unique_name_in_owner = true
 clip_children = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Dialogue" type="MarginContainer" parent="Balloon/MarginContainer/BallonListContainer/MainDialogue"]
+[node name="Dialogue" type="MarginContainer" parent="2DPosition/Balloon/MarginContainer/BallonListContainer/MainDialogue"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,19 +126,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/BallonListContainer/MainDialogue/Dialogue"]
+[node name="VBoxContainer" type="VBoxContainer" parent="2DPosition/Balloon/MarginContainer/BallonListContainer/MainDialogue/Dialogue"]
 layout_mode = 2
 
-[node name="DialogueLabel" parent="Balloon/MarginContainer/BallonListContainer/MainDialogue/Dialogue/VBoxContainer" instance=ExtResource("2_a8ve6")]
+[node name="DialogueLabel" parent="2DPosition/Balloon/MarginContainer/BallonListContainer/MainDialogue/Dialogue/VBoxContainer" instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
 
-[node name="Responses" type="MarginContainer" parent="Balloon/MarginContainer/BallonListContainer"]
+[node name="Responses" type="MarginContainer" parent="2DPosition/Balloon/MarginContainer/BallonListContainer"]
 layout_mode = 2
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/MarginContainer/BallonListContainer/Responses" node_paths=PackedStringArray("response_template")]
+[node name="ResponsesMenu" type="VBoxContainer" parent="2DPosition/Balloon/MarginContainer/BallonListContainer/Responses" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -144,9 +146,9 @@ theme_override_constants/separation = 2
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu"]
+[node name="ResponseExample" type="Button" parent="2DPosition/Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu"]
 layout_mode = 2
 text = "Response example"
 
-[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
-[connection signal="response_selected" from="Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
+[connection signal="gui_input" from="2DPosition/Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="2DPosition/Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
