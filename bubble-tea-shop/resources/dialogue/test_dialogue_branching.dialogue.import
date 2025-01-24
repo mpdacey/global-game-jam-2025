@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://ckf38f5mgqth0"
+path="res://.godot/imported/test_dialogue_branching.dialogue-34f993fe7b8cb80af020afecf25e6bed.tres"
+
+[deps]
+
+source_file="res://resources/dialogue/test_dialogue_branching.dialogue"
+dest_files=["res://.godot/imported/test_dialogue_branching.dialogue-34f993fe7b8cb80af020afecf25e6bed.tres"]
+
+[params]
+
+defaults=true

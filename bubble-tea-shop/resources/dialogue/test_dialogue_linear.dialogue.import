@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://brddy2uvcfcep"
+path="res://.godot/imported/test_dialogue_linear.dialogue-7d95a3cb467c8b464793a52c9d30222e.tres"
+
+[deps]
+
+source_file="res://resources/dialogue/test_dialogue_linear.dialogue"
+dest_files=["res://.godot/imported/test_dialogue_linear.dialogue-7d95a3cb467c8b464793a52c9d30222e.tres"]
+
+[params]
+
+defaults=true
