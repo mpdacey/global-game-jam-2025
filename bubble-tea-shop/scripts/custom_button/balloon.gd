@@ -110,7 +110,7 @@ func apply_dialogue_line(next_dialogue_line: DialogueLine) -> void:
 
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():
-		main_dialogue.custom_minimum_size.y = 50 * (dialogue_line.text.length() / 34 + 1)
+		main_dialogue.custom_minimum_size.y = 50 * (dialogue_line.text.length() / 30 + 1)
 		dialogue_label.type_out()
 		await dialogue_label.finished_typing
 
@@ -129,16 +129,17 @@ func apply_dialogue_line(next_dialogue_line: DialogueLine) -> void:
 
 
 ## Go to the next line
-func next(next_id: String) -> void:
+func next(next_id: String, response: DialogueResponse = null) -> void:
 	var previous_dialogue_line = self.dialogue_line
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
 	if self.dialogue_line:
-		_create_logged_dialogue(previous_dialogue_line)
-	
+		_create_logged_dialogue(previous_dialogue_line.text)
+	if response:
+		_create_logged_dialogue(response.text)
 
-func _create_logged_dialogue(previous_dialogue_line) -> void:
+func _create_logged_dialogue(text: String) -> void:
 	var new_log = BALLOON_PANEL.instantiate()
-	new_log.set_dialogue(previous_dialogue_line.text)
+	new_log.set_dialogue(text)
 	ballon_list_container.add_child(new_log)
 	ballon_list_container.move_child(new_log, ballon_list_container.get_child_count()-3)
 
@@ -185,7 +186,7 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
-	next(response.next_id)
+	next(response.next_id, response)
 
 
 #endregion
