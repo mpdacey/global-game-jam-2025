@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://cn18bmf74fpgx"]
+[gd_scene load_steps=2 format=3 uid="uid://cn18bmf74fpgx"]
+
+[ext_resource type="Script" path="res://scripts/dialogue_controller.gd" id="1_luvwl"]
 
 [node name="Root" type="Node"]
+
+[node name="DialogueController" type="Node" parent="."]
+script = ExtResource("1_luvwl")
