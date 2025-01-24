@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpgnq318l6aua"]
+
+[ext_resource type="Script" path="res://scripts/add_bubbles.gd" id="1_8glki"]
+
+[node name="AddBubbles" type="Node2D"]
+script = ExtResource("1_8glki")
+
+[node name="BubbleSlider" type="VSlider" parent="."]
+offset_top = -225.0
+offset_right = 16.0
+offset_bottom = 8.0
+
+[node name="BubbleButton" type="Button" parent="."]
+offset_left = 99.0
+offset_top = -195.0
+offset_right = 243.0
+offset_bottom = -157.0
+text = "Hold for bubbles"
+
+[node name="LiquidSlider" type="VSlider" parent="."]
+offset_left = 40.0
+offset_top = -225.0
+offset_right = 56.0
+offset_bottom = 8.0
+
+[node name="LiquidButton" type="Button" parent="."]
+offset_left = 99.0
+offset_top = -97.0
+offset_right = 243.0
+offset_bottom = -59.0
+text = "Hold for liquid"
+
+[connection signal="button_down" from="BubbleButton" to="." method="_on_button_button_down" binds= [0]]
+[connection signal="button_up" from="BubbleButton" to="." method="_on_button_button_up" binds= [0]]
+[connection signal="button_down" from="LiquidButton" to="." method="_on_button_button_down" binds= [1]]
+[connection signal="button_up" from="LiquidButton" to="." method="_on_button_button_up" binds= [1]]
