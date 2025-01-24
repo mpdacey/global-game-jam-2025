@@ -29,12 +29,9 @@ var _locale: String = TranslationServer.get_locale()
 ## The current line
 var dialogue_line: DialogueLine:
 	set(value):
+		dialogue_line = value
 		if value:
-			dialogue_line = value
 			apply_dialogue_line(value)
-		else:
-			# The dialogue has finished so close the balloon
-			queue_free()
 	get:
 		return dialogue_line
 
@@ -90,7 +87,7 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 
 
 ## Apply any changes to the balloon given a new [DialogueLine].
-func apply_dialogue_line(next_dialogue_line: DialogueLine) -> void:
+func apply_dialogue_line(next_dialogue_line: DialogueLine) -> void:	
 	is_waiting_for_input = false
 	balloon.focus_mode = Control.FOCUS_ALL
 	balloon.grab_focus()
@@ -130,12 +127,15 @@ func apply_dialogue_line(next_dialogue_line: DialogueLine) -> void:
 
 ## Go to the next line
 func next(next_id: String) -> void:
-	_create_logged_dialogue()
+	var previous_dialogue_line = self.dialogue_line
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
+	if self.dialogue_line:
+		_create_logged_dialogue(previous_dialogue_line)
+	
 
-func _create_logged_dialogue():
+func _create_logged_dialogue(previous_dialogue_line):
 	var new_log = BALLOON_PANEL.instantiate()
-	new_log.set_dialogue(self.dialogue_label.text)
+	new_log.set_dialogue(previous_dialogue_line.text)
 	ballon_list_container.add_child(new_log)
 	ballon_list_container.move_child(new_log, ballon_list_container.get_child_count()-3)
 
@@ -153,6 +153,9 @@ func _on_mutated(_mutation: Dictionary) -> void:
 
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
+	if not dialogue_line:
+		return
+	
 	# See if we need to skip typing of the dialogue
 	if dialogue_label.is_typing:
 		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
