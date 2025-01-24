@@ -81,6 +81,7 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 	temporary_game_states = [self] + extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
+	clear_log()
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
 	
 	character_label.visible = not dialogue_line.character.is_empty()
@@ -135,11 +136,15 @@ func next(next_id: String) -> void:
 		_create_logged_dialogue(previous_dialogue_line)
 	
 
-func _create_logged_dialogue(previous_dialogue_line):
+func _create_logged_dialogue(previous_dialogue_line) -> void:
 	var new_log = BALLOON_PANEL.instantiate()
 	new_log.set_dialogue(previous_dialogue_line.text)
 	ballon_list_container.add_child(new_log)
 	ballon_list_container.move_child(new_log, ballon_list_container.get_child_count()-3)
+
+func clear_log() -> void:
+	for i in range(1, ballon_list_container.get_child_count()-2):
+		ballon_list_container.get_child(i).queue_free()
 
 #region Signals
 
