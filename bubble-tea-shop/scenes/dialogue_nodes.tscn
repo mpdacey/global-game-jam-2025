@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2iycrux1k14q"]
+
+[ext_resource type="Script" path="res://scripts/dialogue_controller.gd" id="1_qope7"]
+[ext_resource type="PackedScene" uid="uid://d7k5o60vm8et" path="res://scenes/custom_button/balloon.tscn" id="2_sxpoo"]
+
+[node name="DialogueNodes" type="Node"]
+
+[node name="DialogueController" type="Node" parent="."]
+script = ExtResource("1_qope7")
+
+[node name="BalloonListController" parent="." instance=ExtResource("2_sxpoo")]
