@@ -4,6 +4,7 @@
 
 [node name="BubbleGenerator" type="Node2D"]
 script = ExtResource("1_qa0qs")
+bubble_colours = Array[Color]([Color(0.968627, 0.756863, 0.117647, 1), Color(0.380392, 0.815686, 0.145098, 1), Color(0.647059, 0.341176, 1, 1), Color(0.960784, 0.219608, 0.219608, 1)])
 
 [node name="BubbleSpawnTimer" type="Timer" parent="."]
 wait_time = 0.15
