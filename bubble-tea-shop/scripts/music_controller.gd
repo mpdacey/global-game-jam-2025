@@ -1,13 +1,32 @@
 extends Node
 
-@export var day_themes: Array[AudioStream]
+var _interactive_music: AudioStreamPlayback
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
+@onready var percussion_animator = $PercussionPlayer/PercussionAnimator
 
-@onready var music_player = $MusicPlayer
-@onready var percussion_animator = $MusicPlayer/PercussionAnimator
+func _ready():
+	_interactive_music = music_player.get_stream_playback()
+
+func _input(event):
+	if not OS.is_debug_build():
+		return
+	
+	if Input.is_key_pressed(KEY_1):
+		_set_day_music(0)
+	elif Input.is_key_pressed(KEY_3):
+		_set_day_music(2)
+	elif Input.is_key_pressed(KEY_5):
+		_set_day_music(4)
 
 func _set_day_music(day_index: int):
-	music_player.stream = day_themes[clamp(day_index, 0, day_themes.size()-1)]
-	music_player.play(0)
+	var key = &"Early"
+	match (day_index):
+		2, 3:
+			key = &"Mid"
+		4:
+			key = &"Late"
+	
+	_interactive_music.switch_to_clip_by_name(key)
 
 func _enter_prep_station():
 	percussion_animator.play("fade_in")
