@@ -10,3 +10,6 @@
 [node name="AudioNodes" type="Node" parent="."]
 
 [node name="MusicConductor" parent="AudioNodes" instance=ExtResource("2_3dua3")]
+
+[connection signal="enter_prep_area" from="GameView" to="AudioNodes/MusicConductor" method="_enter_prep_station"]
+[connection signal="exit_prep_area" from="GameView" to="AudioNodes/MusicConductor" method="_exit_prep_station"]
