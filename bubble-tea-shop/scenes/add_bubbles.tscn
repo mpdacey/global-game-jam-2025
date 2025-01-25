@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://ceuunfs0gh6vt"]
+[gd_scene load_steps=15 format=3 uid="uid://ceuunfs0gh6vt"]
 
 [ext_resource type="Script" path="res://scripts/add_bubbles.gd" id="1_8glki"]
 [ext_resource type="Texture2D" uid="uid://djlcepncshb5k" path="res://sprites/enviroment/Prep-station.png" id="2_yubql"]
 [ext_resource type="Texture2D" uid="uid://xi6qsk14sm7m" path="res://sprites/enviroment/Button-Panel.png" id="3_xrt83"]
 [ext_resource type="Texture2D" uid="uid://dvbls472o3o3w" path="res://sprites/sources/Nozzle.png" id="4_6uhwr"]
 [ext_resource type="Texture2D" uid="uid://6tvuk5bkfw84" path="res://sprites/sources/Cup-Empty.png" id="5_pc73p"]
+[ext_resource type="PackedScene" uid="uid://c3gjkq5vrept" path="res://scenes/bubble_generator.tscn" id="5_tqae6"]
 [ext_resource type="Texture2D" uid="uid://bu6u56mt2q2wl" path="res://sprites/sources/Raspberry.png" id="6_ggg6g"]
 [ext_resource type="Texture2D" uid="uid://c8cof8b13m072" path="res://sprites/sources/Grape.png" id="7_wubqb"]
 [ext_resource type="Texture2D" uid="uid://bdxgfij0oanwy" path="res://sprites/sources/Mango.png" id="8_4wt6q"]
@@ -39,11 +40,19 @@ texture = ExtResource("4_6uhwr")
 region_enabled = true
 region_rect = Rect2(124.297, 0, 120.583, 47.7513)
 
+[node name="BubbleGenerator" parent="Nozzle" instance=ExtResource("5_tqae6")]
+
 [node name="CupEmpty" type="Sprite2D" parent="."]
 position = Vector2(135, -115)
 texture = ExtResource("5_pc73p")
 region_enabled = true
 region_rect = Rect2(124.168, 74.6512, 128.632, 214.151)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CupEmpty"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CupEmpty/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(69, -180, 53, 90, 20, 102, -17, 102, -53, 92, -65, -188)
 
 [node name="BubbleSlider" type="VSlider" parent="."]
 offset_left = 343.0
