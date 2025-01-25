@@ -35,12 +35,14 @@ region_enabled = true
 region_rect = Rect2(26.5409, 5.90694, 75.0192, 201.844)
 
 [node name="Nozzle" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(133, -277)
 texture = ExtResource("4_6uhwr")
 region_enabled = true
 region_rect = Rect2(124.297, 0, 120.583, 47.7513)
 
 [node name="BubbleGenerator" parent="Nozzle" instance=ExtResource("5_tqae6")]
+z_index = -1
 
 [node name="CupEmpty" type="Sprite2D" parent="."]
 z_index = 1
