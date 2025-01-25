@@ -5,4 +5,7 @@ var current_dialogue: DialogueResource = preload("res://resources/dialogue/test_
 
 func _input(event):
 	if event.is_action_pressed("test_dialogue"):
-		balloon_list_controller.start(current_dialogue, "")
+		start_current_dialogue()
+
+func start_current_dialogue():
+	balloon_list_controller.start(current_dialogue, "")
