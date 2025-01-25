@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/resource_scripts/liquid_ratio_resource_script.gd" id="2_6po8g"]
 [ext_resource type="Texture2D" uid="uid://dnb7dik7nd2mo" path="res://sprites/portraits/easy_pete.png" id="2_xs8x8"]
 [ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="3_br7ex"]
-[ext_resource type="Resource" uid="uid://b7g258fas5r51" path="res://resources/dialogue/EasyPeteB.dialogue" id="3_ri2lg"]
+[ext_resource type="Resource" uid="uid://b7g258fas5r51" path="res://resources/dialogue/EasyPete2.dialogue" id="3_ri2lg"]
 
 [resource]
 script = ExtResource("3_br7ex")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://bxk738ud2qdgm"
+path="res://.godot/imported/Micah2.dialogue-eace1881a7e3e18e6dac0dbe2578d2a5.tres"
+
+[deps]
+
+source_file="res://resources/dialogue/Micah2.dialogue"
+dest_files=["res://.godot/imported/Micah2.dialogue-eace1881a7e3e18e6dac0dbe2578d2a5.tres"]
+
+[params]
+
+defaults=true
