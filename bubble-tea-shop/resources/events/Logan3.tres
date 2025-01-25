@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=5 format=3 uid="uid://ky6t6kyrvrnm"]
+
+[ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_gsk7t"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_hem6x"]
+[ext_resource type="Resource" uid="uid://d34nhmtwtb5ub" path="res://resources/dialogue/Logan3.dialogue" id="2_7e2u1"]
+
+[sub_resource type="Resource" id="Resource_neiy0"]
+script = ExtResource("1_gsk7t")
+flavour = 3
+ratio = 0.752
+
+[resource]
+script = ExtResource("1_hem6x")
+bubbles = SubResource("Resource_neiy0")
+liquid = 3
+dialogue = ExtResource("2_7e2u1")
