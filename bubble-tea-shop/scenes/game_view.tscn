@@ -1,15 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://b7xkr6jax36mq"]
+[gd_scene load_steps=23 format=3 uid="uid://b7xkr6jax36mq"]
 
 [ext_resource type="Script" path="res://scripts/game_view.gd" id="1_6q6dj"]
 [ext_resource type="Texture2D" uid="uid://dfo2ndmjqtyuu" path="res://sprites/sources/Arrow.png" id="1_7q07m"]
 [ext_resource type="Script" path="res://scripts/dialogue_controller.gd" id="2_0r6f7"]
 [ext_resource type="Script" path="res://scripts/day_controller.gd" id="2_6rhaf"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_bun35"]
-[ext_resource type="Resource" uid="uid://cv2va71uu54tx" path="res://resources/days/Day3.tres" id="3_n23l6"]
+[ext_resource type="Resource" path="res://resources/days/Day3.tres" id="3_n23l6"]
 [ext_resource type="Texture2D" uid="uid://d4np0ovjdqsbm" path="res://sprites/enviroment/Counter.png" id="3_qg7dw"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_5bukm"]
 [ext_resource type="Script" path="res://scripts/custom_button/balloon.gd" id="5_4bh7q"]
 [ext_resource type="Texture2D" uid="uid://btcb1e0jt5h0r" path="res://sprites/enviroment/Background.png" id="5_crb3j"]
+[ext_resource type="PackedScene" uid="uid://dqyypyolrrshx" path="res://scenes/character_portrait.tscn" id="6_tr44w"]
 [ext_resource type="PackedScene" uid="uid://ceuunfs0gh6vt" path="res://scenes/add_bubbles.tscn" id="7_xvir2"]
 [ext_resource type="Script" path="res://scripts/character_event_controller.gd" id="9_yaugl"]
 
@@ -138,20 +139,22 @@ position = Vector2(-120, 0)
 
 [node name="CounterTop" type="Sprite2D" parent="CounterView"]
 z_index = 1
+texture_filter = 1
 texture = ExtResource("3_qg7dw")
 
-[node name="CharacterPortrait" type="Sprite2D" parent="CounterView/CounterTop"]
+[node name="CharacterPortrait" parent="CounterView/CounterTop" instance=ExtResource("6_tr44w")]
 unique_name_in_owner = true
-z_index = -1
 
 [node name="Background" type="Sprite2D" parent="CounterView/CounterTop"]
 z_index = -2
+texture_filter = 1
 texture = ExtResource("5_crb3j")
 
 [node name="PrepView" parent="." instance=ExtResource("7_xvir2")]
 position = Vector2(520, 0)
 
 [node name="Prep" parent="PrepView" index="0"]
+texture_filter = 1
 position = Vector2(0, 0)
 
 [node name="BubbleSlider" parent="PrepView" index="1"]
@@ -180,6 +183,7 @@ offset_bottom = 25.0
 
 [node name="ConvoView" type="Sprite2D" parent="."]
 modulate = Color(0, 0.888248, 0.275956, 1)
+texture_filter = 1
 position = Vector2(200, 0)
 texture = SubResource("PlaceholderTexture2D_kahqx")
 
@@ -313,6 +317,9 @@ icon = ExtResource("1_7q07m")
 flat = true
 icon_alignment = 1
 
+[connection signal="character_entered" from="CounterView/CounterTop/CharacterPortrait" to="CharacterEventController" method="display_dialogue"]
+[connection signal="character_exited" from="CounterView/CounterTop/CharacterPortrait" to="DayController" method="play_next_event"]
+[connection signal="character_is_exiting" from="CounterView/CounterTop/CharacterPortrait" to="ConvoView/DialogueNodes/DialogueController" method="clear_dialogue"]
 [connection signal="gui_input" from="ConvoView/DialogueNodes/2DPosition/Balloon" to="ConvoView/DialogueNodes/BalloonListController" method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="ConvoView/DialogueNodes/2DPosition/Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu" to="ConvoView/DialogueNodes/BalloonListController" method="_on_responses_menu_response_selected"]
 [connection signal="pressed" from="ConvoView/Button-R" to="." method="_on_button_r_pressed"]
