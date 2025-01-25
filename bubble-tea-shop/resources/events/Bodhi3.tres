@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=5 format=3 uid="uid://bhbuftr8f3la1"]
+
+[ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_1xpm6"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_hjeuc"]
+[ext_resource type="Resource" uid="uid://comkmdt6y7b87" path="res://resources/dialogue/Bodhi3.dialogue" id="2_ud78b"]
+
+[sub_resource type="Resource" id="Resource_ii76x"]
+script = ExtResource("1_1xpm6")
+flavour = 0
+ratio = 0.5
+
+[resource]
+script = ExtResource("1_hjeuc")
+bubbles = SubResource("Resource_ii76x")
+liquid = 2
+dialogue = ExtResource("2_ud78b")
