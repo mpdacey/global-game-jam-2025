@@ -8,7 +8,7 @@ enum LiquidFlavour {
 	STRAWBERRY
 }
 
-@export var bubbles: Array[BubbleRatio]
+@export var bubbles: BubbleRatio
 @export var liquid: LiquidFlavour
 @export var character_sprite: Texture2D
 @export var dialogue: DialogueResource
