@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://w6dx7fr4tmne"]
 
-[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_mg4kl"]
-[ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_ohjab"]
-[ext_resource type="Texture2D" uid="uid://c1ktwkqvkku8q" path="res://sprites/portraits/alex.png" id="2_qs2j8"]
-[ext_resource type="Resource" uid="uid://bd8megyk676w2" path="res://resources/dialogue/Alex5.dialogue" id="3_v6q51"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_y5l2h"]
+[ext_resource type="Texture2D" uid="uid://c1ktwkqvkku8q" path="res://sprites/portraits/alex.png" id="2_j16jc"]
+[ext_resource type="Resource" uid="uid://bd8megyk676w2" path="res://resources/dialogue/Alex5.dialogue" id="3_hrmxt"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="4_rfani"]
 
 [sub_resource type="Resource" id="Resource_1g80k"]
-script = ExtResource("1_ohjab")
+script = ExtResource("1_y5l2h")
 flavour = 1
 ratio = 1.0
 
 [resource]
-script = ExtResource("1_mg4kl")
+script = ExtResource("4_rfani")
 bubbles = SubResource("Resource_1g80k")
 liquid = 0
-character_sprite = ExtResource("2_qs2j8")
-dialogue = ExtResource("3_v6q51")
+character_sprite = ExtResource("2_j16jc")
+dialogue = ExtResource("3_hrmxt")
