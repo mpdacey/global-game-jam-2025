@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=2 format=3 uid="uid://ddhdl4be46rfw"]
+
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_w3yu8"]
+
+[resource]
+script = ExtResource("1_w3yu8")
+liquid = 0

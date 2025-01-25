@@ -1,10 +1,13 @@
-[gd_resource type="Resource" script_class="DayResource" load_steps=5 format=3 uid="uid://cv2va71uu54tx"]
+[gd_resource type="Resource" script_class="DayResource" load_steps=8 format=3 uid="uid://cv2va71uu54tx"]
 
-[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_phjug"]
-[ext_resource type="Resource" path="res://resources/events/Alex B.tres" id="2_e4su5"]
-[ext_resource type="Script" path="res://scripts/resource_scripts/day_resource_script.gd" id="2_o0aej"]
-[ext_resource type="Resource" uid="uid://bnwfde7sni1vk" path="res://resources/events/EasyPete2.tres" id="3_i1if7"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_pcomh"]
+[ext_resource type="Resource" uid="uid://bnwfde7sni1vk" path="res://resources/events/EasyPete2.tres" id="2_hn5sc"]
+[ext_resource type="Resource" uid="uid://bs4ajsepsn7it" path="res://resources/events/Alex3.tres" id="3_ddnh2"]
+[ext_resource type="Resource" uid="uid://bhbuftr8f3la1" path="res://resources/events/Bodhi3.tres" id="4_kjitq"]
+[ext_resource type="Resource" uid="uid://ky6t6kyrvrnm" path="res://resources/events/Logan3.tres" id="5_hkgj8"]
+[ext_resource type="Resource" uid="uid://ddhdl4be46rfw" path="res://resources/events/Quinn3.tres" id="6_bgcqu"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/day_resource_script.gd" id="7_rt5o2"]
 
 [resource]
-script = ExtResource("2_o0aej")
-events = Array[ExtResource("1_phjug")]([ExtResource("2_e4su5"), ExtResource("3_i1if7")])
+script = ExtResource("7_rt5o2")
+events = Array[ExtResource("1_pcomh")]([ExtResource("2_hn5sc"), ExtResource("3_ddnh2"), ExtResource("4_kjitq"), ExtResource("5_hkgj8"), ExtResource("6_bgcqu")])
