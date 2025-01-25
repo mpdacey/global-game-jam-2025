@@ -1,11 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7xkr6jax36mq"]
+[gd_scene load_steps=22 format=3 uid="uid://b7xkr6jax36mq"]
 
 [ext_resource type="Script" path="res://scripts/game_view.gd" id="1_6q6dj"]
 [ext_resource type="Texture2D" uid="uid://dfo2ndmjqtyuu" path="res://sprites/sources/Arrow.png" id="1_7q07m"]
 [ext_resource type="Script" path="res://scripts/dialogue_controller.gd" id="2_0r6f7"]
+[ext_resource type="Script" path="res://scripts/day_controller.gd" id="2_6rhaf"]
+[ext_resource type="Texture2D" uid="uid://dnb7dik7nd2mo" path="res://sprites/portraits/easy_pete.png" id="3_687ux"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_bun35"]
+[ext_resource type="Texture2D" uid="uid://d4np0ovjdqsbm" path="res://sprites/enviroment/Counter.png" id="3_qg7dw"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_5bukm"]
 [ext_resource type="Script" path="res://scripts/custom_button/balloon.gd" id="5_4bh7q"]
+[ext_resource type="Texture2D" uid="uid://btcb1e0jt5h0r" path="res://sprites/enviroment/Background.png" id="5_crb3j"]
+[ext_resource type="Script" path="res://scripts/character_event_controller.gd" id="9_yaugl"]
 
 [sub_resource type="Animation" id="Animation_yw8vb"]
 length = 0.001
@@ -44,6 +49,9 @@ _data = {
 }
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_4gf45"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kahqx"]
+size = Vector2(240, 360)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -104,8 +112,16 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
-[node name="GameView" type="Node2D"]
+[node name="GameView" type="Node"]
 script = ExtResource("1_6q6dj")
+
+[node name="DayController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_6rhaf")
+
+[node name="CharacterEventController" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_yaugl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.29, 0.29)
@@ -118,30 +134,42 @@ libraries = {
 }
 
 [node name="CounterView" type="Sprite2D" parent="."]
-modulate = Color(0.855083, 0.859325, 0.733168, 1)
-scale = Vector2(640, 360)
-texture = SubResource("CanvasTexture_4gf45")
+position = Vector2(-120, 0)
+
+[node name="CounterTop" type="Sprite2D" parent="CounterView"]
+z_index = 1
+texture = ExtResource("3_qg7dw")
+
+[node name="CharacterPortrait" type="Sprite2D" parent="CounterView/CounterTop"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+z_index = -1
+texture = ExtResource("3_687ux")
+
+[node name="Background" type="Sprite2D" parent="CounterView/CounterTop"]
+z_index = -2
+texture = ExtResource("5_crb3j")
 
 [node name="PrepView" type="Sprite2D" parent="."]
 modulate = Color(0.855083, 0.859325, 0.733168, 1)
-position = Vector2(400, 0)
-scale = Vector2(640, 360)
+position = Vector2(519.5, 0)
+scale = Vector2(400, 359.102)
 texture = SubResource("CanvasTexture_4gf45")
 
 [node name="ConvoView" type="Sprite2D" parent="."]
 modulate = Color(0.86, 0.731, 0.7955, 1)
 position = Vector2(200, 0)
-scale = Vector2(240, 360)
-texture = SubResource("CanvasTexture_4gf45")
+texture = SubResource("PlaceholderTexture2D_kahqx")
 
 [node name="DialogueNodes" type="Node" parent="ConvoView"]
 
 [node name="DialogueController" type="Node" parent="ConvoView/DialogueNodes"]
+unique_name_in_owner = true
 script = ExtResource("2_0r6f7")
 
 [node name="2DPosition" type="Node2D" parent="ConvoView/DialogueNodes"]
 z_index = 1
-position = Vector2(182.5, -200)
+position = Vector2(200, -180)
 scale = Vector2(0.55, 0.55)
 
 [node name="Balloon" type="Control" parent="ConvoView/DialogueNodes/2DPosition"]
@@ -174,7 +202,6 @@ alignment = 2
 
 [node name="CharacterLabel" type="RichTextLabel" parent="ConvoView/DialogueNodes/2DPosition/Balloon/MarginContainer/BallonListContainer"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 1
@@ -228,16 +255,16 @@ text = "Response example"
 layer = 100
 script = ExtResource("5_4bh7q")
 
-[node name="Button-R" type="Button" parent="."]
+[node name="Button-R" type="Button" parent="ConvoView"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 2.99997
-offset_top = -39.0
-offset_right = 267.0
-offset_bottom = 225.0
+offset_left = -320.0
+offset_top = -198.0
+offset_right = -56.0
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.29, 0.29)
@@ -246,16 +273,16 @@ icon = ExtResource("1_7q07m")
 flat = true
 icon_alignment = 1
 
-[node name="Button-L" type="Button" parent="."]
+[node name="Button-L" type="Button" parent="ConvoView"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 396.0
-offset_top = -39.0
-offset_right = 660.0
-offset_bottom = 225.0
+offset_left = 80.0
+offset_top = -198.0
+offset_right = 344.0
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(-0.29, 0.29)
@@ -266,5 +293,5 @@ icon_alignment = 1
 
 [connection signal="gui_input" from="ConvoView/DialogueNodes/2DPosition/Balloon" to="ConvoView/DialogueNodes/BalloonListController" method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="ConvoView/DialogueNodes/2DPosition/Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu" to="ConvoView/DialogueNodes/BalloonListController" method="_on_responses_menu_response_selected"]
-[connection signal="pressed" from="Button-R" to="." method="_on_button_r_pressed"]
-[connection signal="pressed" from="Button-L" to="." method="_on_button_l_pressed"]
+[connection signal="pressed" from="ConvoView/Button-R" to="." method="_on_button_r_pressed"]
+[connection signal="pressed" from="ConvoView/Button-L" to="." method="_on_button_l_pressed"]
