@@ -8,4 +8,8 @@ func _input(event):
 		start_current_dialogue()
 
 func start_current_dialogue():
+	%Balloon.visible = true
 	balloon_list_controller.start(current_dialogue, "")
+
+func clear_dialogue():
+	%Balloon.visible = false

@@ -319,6 +319,7 @@ icon_alignment = 1
 
 [connection signal="character_entered" from="CounterView/CounterTop/CharacterPortrait" to="CharacterEventController" method="display_dialogue"]
 [connection signal="character_exited" from="CounterView/CounterTop/CharacterPortrait" to="DayController" method="play_next_event"]
+[connection signal="character_is_exiting" from="CounterView/CounterTop/CharacterPortrait" to="ConvoView/DialogueNodes/DialogueController" method="clear_dialogue"]
 [connection signal="gui_input" from="ConvoView/DialogueNodes/2DPosition/Balloon" to="ConvoView/DialogueNodes/BalloonListController" method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="ConvoView/DialogueNodes/2DPosition/Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu" to="ConvoView/DialogueNodes/BalloonListController" method="_on_responses_menu_response_selected"]
 [connection signal="pressed" from="ConvoView/Button-R" to="." method="_on_button_r_pressed"]
