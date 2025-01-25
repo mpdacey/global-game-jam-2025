@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=8 format=3 uid="uid://cqeh6e0mg1qfp"]
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://cqeh6e0mg1qfp"]
 
 [ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_gw4xh"]
 [ext_resource type="Texture2D" uid="uid://c1ktwkqvkku8q" path="res://sprites/portraits/alex.png" id="2_jk3sd"]
-[ext_resource type="Script" path="res://scripts/resource_scripts/liquid_ratio_resource_script.gd" id="2_kn0ww"]
 [ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="3_odirq"]
 [ext_resource type="Resource" uid="uid://dj43sea7400ud" path="res://resources/dialogue/AlexA.dialogue" id="3_tiuqa"]
 
@@ -11,14 +10,9 @@ script = ExtResource("1_gw4xh")
 flavour = 3
 ratio = 0.75
 
-[sub_resource type="Resource" id="Resource_xvq1k"]
-script = ExtResource("2_kn0ww")
-flavour = 0
-ratio = 1.0
-
 [resource]
 script = ExtResource("3_odirq")
 bubbles = Array[ExtResource("1_gw4xh")]([SubResource("Resource_wnigf")])
-liquids = Array[ExtResource("2_kn0ww")]([SubResource("Resource_xvq1k")])
+liquid = 0
 character_sprite = ExtResource("2_jk3sd")
 dialogue = ExtResource("3_tiuqa")
