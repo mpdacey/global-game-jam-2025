@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://jgod5t81qx1c"
+path="res://.godot/imported/Bodhi5.dialogue-cabf15e062f4bfedfa53107e1280ea47.tres"
+
+[deps]
+
+source_file="res://resources/dialogue/Bodhi5.dialogue"
+dest_files=["res://.godot/imported/Bodhi5.dialogue-cabf15e062f4bfedfa53107e1280ea47.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://hde0exfk0vcs"
+path="res://.godot/imported/Quinn3.dialogue-245ec0f200810fcc1a298cadeb78a67e.tres"
+
+[deps]
+
+source_file="res://resources/dialogue/Quinn3.dialogue"
+dest_files=["res://.godot/imported/Quinn3.dialogue-245ec0f200810fcc1a298cadeb78a67e.tres"]
+
+[params]
+
+defaults=true
