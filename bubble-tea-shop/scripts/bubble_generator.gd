@@ -22,6 +22,8 @@ func _on_button_pressed(flavour: BubbleRatio.BubbleFlavour):
 func _bubble_spawn_time_out():
 	var bubble = bubble_scene.instantiate()
 	bubble_collection.add_child(bubble)
+	bubble.global_position = global_position
+	bubble.position.x += randf_range(-4.0, 4.0)
 	
 	if bubble_collection.get_child_count() >= BUBBLE_MAX_COUNT:
 		max_achieved.emit()
