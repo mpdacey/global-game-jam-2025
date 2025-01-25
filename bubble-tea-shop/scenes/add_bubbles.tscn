@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpgnq318l6aua"]
+[gd_scene load_steps=3 format=3 uid="uid://cpgnq318l6aua"]
 
 [ext_resource type="Script" path="res://scripts/add_bubbles.gd" id="1_8glki"]
+[ext_resource type="Texture2D" uid="uid://c0q6e4itq1yy0" path="res://sprites/enviroment/Prep.png" id="2_sha2i"]
 
 [node name="AddBubbles" type="Node2D"]
 script = ExtResource("1_8glki")
+
+[node name="Prep" type="Sprite2D" parent="."]
+position = Vector2(135, -120)
+texture = ExtResource("2_sha2i")
 
 [node name="BubbleSlider" type="VSlider" parent="."]
 offset_top = -225.0
