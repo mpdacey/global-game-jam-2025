@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cn18bmf74fpgx"]
 
 [ext_resource type="PackedScene" uid="uid://b7xkr6jax36mq" path="res://scenes/game_view.tscn" id="1_xfveh"]
-[ext_resource type="PackedScene" path="res://scenes/add_bubbles.tscn" id="2_rbcjw"]
+[ext_resource type="PackedScene" uid="uid://cpgnq318l6aua" path="res://scenes/add_bubbles.tscn" id="2_rbcjw"]
 
 [node name="Root" type="Node"]
 
 [node name="GameView" parent="." instance=ExtResource("1_xfveh")]
 
 [node name="AddBubbles" parent="." instance=ExtResource("2_rbcjw")]
-position = Vector2(369, 85)
+position = Vector2(385, 120)
