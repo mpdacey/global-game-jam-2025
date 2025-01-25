@@ -1,26 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmr4l5c1ukddh"]
+[gd_scene load_steps=4 format=3 uid="uid://bmr4l5c1ukddh"]
 
-[ext_resource type="Shader" uid="uid://fluyfmxh3w86" path="res://shaders/bubble_shader.tres" id="1_gu4ow"]
+[ext_resource type="Material" uid="uid://dpmkjflkrcvhf" path="res://materials/bubble_material.tres" id="1_ww7qr"]
 [ext_resource type="Texture2D" uid="uid://brqn43ip8sfru" path="res://sprites/bubble.png" id="2_kvciu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_drf1k"]
 radius = 8.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdxbn"]
-shader = ExtResource("1_gu4ow")
-shader_parameter/BubbleColour = Color(0.171007, 0.870014, 0.780464, 1)
-shader_parameter/BubbleTexture = ExtResource("2_kvciu")
-
-[node name="Node2D" type="Node2D"]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="Bubble" type="RigidBody2D"]
 mass = 0.05
 gravity_scale = 0.9
+lock_rotation = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_drf1k")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_hdxbn")
+material = ExtResource("1_ww7qr")
 texture = ExtResource("2_kvciu")

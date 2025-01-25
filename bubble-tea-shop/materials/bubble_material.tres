@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dpmkjflkrcvhf"]
+
+[ext_resource type="Shader" uid="uid://fluyfmxh3w86" path="res://shaders/bubble_shader.tres" id="1_54ma6"]
+[ext_resource type="Texture2D" uid="uid://brqn43ip8sfru" path="res://sprites/bubble.png" id="2_2nwsh"]
+
+[resource]
+shader = ExtResource("1_54ma6")
+shader_parameter/BubbleColour = Color(0.171007, 0.870014, 0.780464, 1)
+shader_parameter/BubbleTexture = ExtResource("2_2nwsh")
