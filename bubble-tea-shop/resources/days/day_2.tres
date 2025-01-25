@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/resource_scripts/day_resource_script.gd" id="2_unst0"]
 [ext_resource type="Resource" uid="uid://cqeh6e0mg1qfp" path="res://resources/events/Alex2.tres" id="3_v4fw5"]
 [ext_resource type="Resource" uid="uid://eaowjso7shkd" path="res://resources/events/Micah2.tres" id="4_7mybn"]
-[ext_resource type="Resource" uid="uid://r5xj4ijq4y8i" path="res://resources/events/Bodhi2.tres" id="4_fava1"]
+[ext_resource type="Resource" uid="uid://r5xj4ijq4y8i" path="res://resources/events/Kai2.tres" id="4_fava1"]
 
 [resource]
 script = ExtResource("2_unst0")

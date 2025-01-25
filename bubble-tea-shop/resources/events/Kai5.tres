@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_838yw"]
 [ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_fihpl"]
-[ext_resource type="Resource" uid="uid://jgod5t81qx1c" path="res://resources/dialogue/Bodhi5.dialogue" id="2_14m21"]
+[ext_resource type="Resource" uid="uid://jgod5t81qx1c" path="res://resources/dialogue/Kai5.dialogue" id="2_14m21"]
 
 [sub_resource type="Resource" id="Resource_mn5wp"]
 script = ExtResource("1_fihpl")
