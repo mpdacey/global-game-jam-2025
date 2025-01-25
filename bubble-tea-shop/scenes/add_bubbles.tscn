@@ -1,41 +1,139 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceuunfs0gh6vt"]
+[gd_scene load_steps=14 format=3 uid="uid://ceuunfs0gh6vt"]
 
 [ext_resource type="Script" path="res://scripts/add_bubbles.gd" id="1_8glki"]
-[ext_resource type="Texture2D" uid="uid://c0q6e4itq1yy0" path="res://sprites/enviroment/Prep.png" id="2_sha2i"]
+[ext_resource type="Texture2D" uid="uid://djlcepncshb5k" path="res://sprites/enviroment/Prep-station.png" id="2_yubql"]
+[ext_resource type="Texture2D" uid="uid://xi6qsk14sm7m" path="res://sprites/enviroment/Button-Panel.png" id="3_xrt83"]
+[ext_resource type="Texture2D" uid="uid://dvbls472o3o3w" path="res://sprites/sources/Nozzle.png" id="4_6uhwr"]
+[ext_resource type="Texture2D" uid="uid://6tvuk5bkfw84" path="res://sprites/sources/Cup-Empty.png" id="5_pc73p"]
+[ext_resource type="Texture2D" uid="uid://bu6u56mt2q2wl" path="res://sprites/sources/Raspberry.png" id="6_ggg6g"]
+[ext_resource type="Texture2D" uid="uid://c8cof8b13m072" path="res://sprites/sources/Grape.png" id="7_wubqb"]
+[ext_resource type="Texture2D" uid="uid://bdxgfij0oanwy" path="res://sprites/sources/Mango.png" id="8_4wt6q"]
+[ext_resource type="Texture2D" uid="uid://b7cwdfw01v753" path="res://sprites/sources/Lime.png" id="9_enwm7"]
+[ext_resource type="Texture2D" uid="uid://dm3jjd0e8yq4w" path="res://sprites/sources/Strawberry.png" id="10_gnbn8"]
+[ext_resource type="Texture2D" uid="uid://cogactj2j6s3t" path="res://sprites/sources/Peach.png" id="11_vf4qq"]
+[ext_resource type="Texture2D" uid="uid://by4luntfvqr2o" path="res://sprites/sources/Coconut.png" id="12_14f7h"]
+[ext_resource type="Texture2D" uid="uid://bp3k5x5d5c2sd" path="res://sprites/sources/Matcha.png" id="13_6nh5n"]
 
 [node name="AddBubbles" type="Node2D"]
 script = ExtResource("1_8glki")
 
-[node name="Prep" type="Sprite2D" parent="."]
+[node name="Prep-station" type="Sprite2D" parent="."]
 position = Vector2(135, -120)
-texture = ExtResource("2_sha2i")
+texture = ExtResource("2_yubql")
+
+[node name="ButtonPanelL" type="Sprite2D" parent="."]
+position = Vector2(-1, -154)
+texture = ExtResource("3_xrt83")
+region_enabled = true
+region_rect = Rect2(26.5409, 5.90694, 75.0192, 201.844)
+
+[node name="ButtonPanelR" type="Sprite2D" parent="."]
+position = Vector2(270, -154)
+texture = ExtResource("3_xrt83")
+region_enabled = true
+region_rect = Rect2(26.5409, 5.90694, 75.0192, 201.844)
+
+[node name="Nozzle" type="Sprite2D" parent="."]
+position = Vector2(133, -277)
+texture = ExtResource("4_6uhwr")
+region_enabled = true
+region_rect = Rect2(124.297, 0, 120.583, 47.7513)
+
+[node name="CupEmpty" type="Sprite2D" parent="."]
+position = Vector2(135, -115)
+texture = ExtResource("5_pc73p")
+region_enabled = true
+region_rect = Rect2(124.168, 74.6512, 128.632, 214.151)
 
 [node name="BubbleSlider" type="VSlider" parent="."]
-offset_top = -225.0
-offset_right = 16.0
-offset_bottom = 8.0
+offset_left = 343.0
+offset_top = -265.0
+offset_right = 359.0
+offset_bottom = -32.0
 
 [node name="BubbleButton" type="Button" parent="."]
-offset_left = 99.0
-offset_top = -195.0
-offset_right = 243.0
-offset_bottom = -157.0
-text = "Hold for bubbles"
+offset_left = 238.0
+offset_top = -245.0
+offset_right = 303.0
+offset_bottom = -208.0
+icon = ExtResource("6_ggg6g")
+flat = true
+
+[node name="BubbleButton2" type="Button" parent="."]
+offset_left = 238.0
+offset_top = -199.0
+offset_right = 303.0
+offset_bottom = -162.0
+icon = ExtResource("7_wubqb")
+flat = true
+
+[node name="BubbleButton3" type="Button" parent="."]
+offset_left = 238.0
+offset_top = -151.0
+offset_right = 303.0
+offset_bottom = -114.0
+icon = ExtResource("8_4wt6q")
+flat = true
+
+[node name="BubbleButton4" type="Button" parent="."]
+offset_left = 238.0
+offset_top = -105.0
+offset_right = 303.0
+offset_bottom = -68.0
+icon = ExtResource("9_enwm7")
+flat = true
 
 [node name="LiquidSlider" type="VSlider" parent="."]
-offset_left = 40.0
-offset_top = -225.0
-offset_right = 56.0
-offset_bottom = 8.0
+offset_left = 383.0
+offset_top = -265.0
+offset_right = 399.0
+offset_bottom = -32.0
 
 [node name="LiquidButton" type="Button" parent="."]
-offset_left = 99.0
-offset_top = -97.0
-offset_right = 243.0
-offset_bottom = -59.0
-text = "Hold for liquid"
+offset_left = -33.0
+offset_top = -245.0
+offset_right = 32.0
+offset_bottom = -209.0
+icon = ExtResource("10_gnbn8")
+flat = true
+
+[node name="LiquidButton2" type="Button" parent="."]
+offset_left = -33.0
+offset_top = -199.0
+offset_right = 32.0
+offset_bottom = -163.0
+icon = ExtResource("11_vf4qq")
+flat = true
+
+[node name="LiquidButton3" type="Button" parent="."]
+offset_left = -34.0
+offset_top = -151.0
+offset_right = 31.0
+offset_bottom = -115.0
+icon = ExtResource("12_14f7h")
+flat = true
+
+[node name="LiquidButton4" type="Button" parent="."]
+offset_left = -34.0
+offset_top = -105.0
+offset_right = 31.0
+offset_bottom = -69.0
+icon = ExtResource("13_6nh5n")
+flat = true
 
 [connection signal="button_down" from="BubbleButton" to="." method="_on_button_button_down" binds= [0]]
 [connection signal="button_up" from="BubbleButton" to="." method="_on_button_button_up" binds= [0]]
+[connection signal="button_down" from="BubbleButton2" to="." method="_on_button_button_down" binds= [0]]
+[connection signal="button_up" from="BubbleButton2" to="." method="_on_button_button_up" binds= [0]]
+[connection signal="button_down" from="BubbleButton3" to="." method="_on_button_button_down" binds= [0]]
+[connection signal="button_up" from="BubbleButton3" to="." method="_on_button_button_up" binds= [0]]
+[connection signal="button_down" from="BubbleButton4" to="." method="_on_button_button_down" binds= [0]]
+[connection signal="button_up" from="BubbleButton4" to="." method="_on_button_button_up" binds= [0]]
 [connection signal="button_down" from="LiquidButton" to="." method="_on_button_button_down" binds= [1]]
 [connection signal="button_up" from="LiquidButton" to="." method="_on_button_button_up" binds= [1]]
+[connection signal="button_down" from="LiquidButton2" to="." method="_on_button_button_down" binds= [1]]
+[connection signal="button_up" from="LiquidButton2" to="." method="_on_button_button_up" binds= [1]]
+[connection signal="button_down" from="LiquidButton3" to="." method="_on_button_button_down" binds= [1]]
+[connection signal="button_up" from="LiquidButton3" to="." method="_on_button_button_up" binds= [1]]
+[connection signal="button_down" from="LiquidButton4" to="." method="_on_button_button_down" binds= [1]]
+[connection signal="button_up" from="LiquidButton4" to="." method="_on_button_button_up" binds= [1]]
