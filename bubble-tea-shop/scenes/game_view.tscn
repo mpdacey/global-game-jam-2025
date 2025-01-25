@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://scripts/dialogue_controller.gd" id="2_0r6f7"]
 [ext_resource type="Script" path="res://scripts/day_controller.gd" id="2_6rhaf"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_bun35"]
+[ext_resource type="Resource" uid="uid://cv2va71uu54tx" path="res://resources/days/Day3.tres" id="3_n23l6"]
 [ext_resource type="Texture2D" uid="uid://d4np0ovjdqsbm" path="res://sprites/enviroment/Counter.png" id="3_qg7dw"]
-[ext_resource type="Resource" uid="uid://cfsq4m4g8w7kj" path="res://resources/days/day_2.tres" id="3_sdr2h"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_5bukm"]
 [ext_resource type="Script" path="res://scripts/custom_button/balloon.gd" id="5_4bh7q"]
 [ext_resource type="Texture2D" uid="uid://btcb1e0jt5h0r" path="res://sprites/enviroment/Background.png" id="5_crb3j"]
@@ -117,7 +117,7 @@ script = ExtResource("1_6q6dj")
 [node name="DayController" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_6rhaf")
-current_day = ExtResource("3_sdr2h")
+current_day = ExtResource("3_n23l6")
 
 [node name="CharacterEventController" type="Node" parent="."]
 unique_name_in_owner = true

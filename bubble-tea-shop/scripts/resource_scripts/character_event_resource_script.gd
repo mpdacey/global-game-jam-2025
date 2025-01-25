@@ -1,7 +1,14 @@
 extends Resource
 class_name CharacterEventResource
 
-@export var bubbles: Array[BubbleRatio]
-@export var liquids: Array[LiquidRatio]
+enum LiquidFlavour {
+	PEACH,
+	MATCHA,
+	COCONUT,
+	STRAWBERRY
+}
+
+@export var bubbles: BubbleRatio
+@export var liquid: LiquidFlavour
 @export var character_sprite: Texture2D
 @export var dialogue: DialogueResource
