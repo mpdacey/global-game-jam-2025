@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://eaowjso7shkd"]
+
+[ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_l4d81"]
+[ext_resource type="Texture2D" uid="uid://dxxfm5dbgg36a" path="res://sprites/portraits/micah.png" id="2_0v100"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/liquid_ratio_resource_script.gd" id="2_dddbs"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="3_lprs1"]
+[ext_resource type="Resource" uid="uid://cvl4bjafq8n8t" path="res://resources/dialogue/MicahA.dialogue" id="3_okn0u"]
+
+[resource]
+script = ExtResource("3_lprs1")
+bubbles = Array[ExtResource("1_l4d81")]([])
+liquids = Array[ExtResource("2_dddbs")]([])
+character_sprite = ExtResource("2_0v100")
+dialogue = ExtResource("3_okn0u")
