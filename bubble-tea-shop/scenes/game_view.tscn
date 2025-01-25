@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dfo2ndmjqtyuu" path="res://sprites/sources/Arrow.png" id="1_7q07m"]
 [ext_resource type="Script" path="res://scripts/dialogue_controller.gd" id="2_0r6f7"]
 [ext_resource type="Script" path="res://scripts/day_controller.gd" id="2_6rhaf"]
-[ext_resource type="Texture2D" uid="uid://dnb7dik7nd2mo" path="res://sprites/portraits/easy_pete.png" id="3_687ux"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_bun35"]
 [ext_resource type="Texture2D" uid="uid://d4np0ovjdqsbm" path="res://sprites/enviroment/Counter.png" id="3_qg7dw"]
+[ext_resource type="Resource" uid="uid://cfsq4m4g8w7kj" path="res://resources/days/day_2.tres" id="3_sdr2h"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_5bukm"]
 [ext_resource type="Script" path="res://scripts/custom_button/balloon.gd" id="5_4bh7q"]
 [ext_resource type="Texture2D" uid="uid://btcb1e0jt5h0r" path="res://sprites/enviroment/Background.png" id="5_crb3j"]
+[ext_resource type="PackedScene" uid="uid://ceuunfs0gh6vt" path="res://scenes/add_bubbles.tscn" id="7_xvir2"]
 [ext_resource type="Script" path="res://scripts/character_event_controller.gd" id="9_yaugl"]
 
 [sub_resource type="Animation" id="Animation_yw8vb"]
@@ -47,8 +48,6 @@ _data = {
 "RESET": SubResource("Animation_yw8vb"),
 "camera_pan": SubResource("Animation_iue0g")
 }
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_4gf45"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kahqx"]
 size = Vector2(240, 360)
@@ -118,6 +117,7 @@ script = ExtResource("1_6q6dj")
 [node name="DayController" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_6rhaf")
+current_day = ExtResource("3_sdr2h")
 
 [node name="CharacterEventController" type="Node" parent="."]
 unique_name_in_owner = true
@@ -133,7 +133,7 @@ libraries = {
 "": SubResource("AnimationLibrary_08b0j")
 }
 
-[node name="CounterView" type="Sprite2D" parent="."]
+[node name="CounterView" type="Node2D" parent="."]
 position = Vector2(-120, 0)
 
 [node name="CounterTop" type="Sprite2D" parent="CounterView"]
@@ -142,22 +142,44 @@ texture = ExtResource("3_qg7dw")
 
 [node name="CharacterPortrait" type="Sprite2D" parent="CounterView/CounterTop"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
 z_index = -1
-texture = ExtResource("3_687ux")
 
 [node name="Background" type="Sprite2D" parent="CounterView/CounterTop"]
 z_index = -2
 texture = ExtResource("5_crb3j")
 
-[node name="PrepView" type="Sprite2D" parent="."]
-modulate = Color(0.855083, 0.859325, 0.733168, 1)
-position = Vector2(519.5, 0)
-scale = Vector2(400, 359.102)
-texture = SubResource("CanvasTexture_4gf45")
+[node name="PrepView" parent="." instance=ExtResource("7_xvir2")]
+position = Vector2(520, 0)
+
+[node name="Prep" parent="PrepView" index="0"]
+position = Vector2(0, 0)
+
+[node name="BubbleSlider" parent="PrepView" index="1"]
+offset_left = -84.0
+offset_top = -141.0
+offset_right = -68.0
+offset_bottom = 92.0
+
+[node name="BubbleButton" parent="PrepView" index="2"]
+offset_left = 15.0
+offset_top = -111.0
+offset_right = 159.0
+offset_bottom = -73.0
+
+[node name="LiquidSlider" parent="PrepView" index="3"]
+offset_left = -44.0
+offset_top = -141.0
+offset_right = -28.0
+offset_bottom = 92.0
+
+[node name="LiquidButton" parent="PrepView" index="4"]
+offset_left = 15.0
+offset_top = -13.0
+offset_right = 159.0
+offset_bottom = 25.0
 
 [node name="ConvoView" type="Sprite2D" parent="."]
-modulate = Color(0.86, 0.731, 0.7955, 1)
+modulate = Color(0, 0.888248, 0.275956, 1)
 position = Vector2(200, 0)
 texture = SubResource("PlaceholderTexture2D_kahqx")
 
@@ -295,3 +317,5 @@ icon_alignment = 1
 [connection signal="response_selected" from="ConvoView/DialogueNodes/2DPosition/Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu" to="ConvoView/DialogueNodes/BalloonListController" method="_on_responses_menu_response_selected"]
 [connection signal="pressed" from="ConvoView/Button-R" to="." method="_on_button_r_pressed"]
 [connection signal="pressed" from="ConvoView/Button-L" to="." method="_on_button_l_pressed"]
+
+[editable path="PrepView"]
