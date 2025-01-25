@@ -26,6 +26,7 @@ layout_mode = 2
 
 [node name="DialogueLabel" type="RichTextLabel" parent="Dialogue/VBoxContainer"]
 layout_mode = 2
+bbcode_enabled = true
 text = "Dialogue..."
 fit_content = true
 scroll_active = false
