@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://0xq2m3ac0ufs"
+path="res://.godot/imported/EasyPeteA.dialogue-ea9edf9998c5ef67c74091cb48311731.tres"
+
+[deps]
+
+source_file="res://resources/dialogue/EasyPeteA.dialogue"
+dest_files=["res://.godot/imported/EasyPeteA.dialogue-ea9edf9998c5ef67c74091cb48311731.tres"]
+
+[params]
+
+defaults=true
