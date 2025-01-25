@@ -1,80 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn18bmf74fpgx"]
+[gd_scene load_steps=3 format=3 uid="uid://cn18bmf74fpgx"]
 
 [ext_resource type="PackedScene" uid="uid://b7xkr6jax36mq" path="res://scenes/game_view.tscn" id="1_xfveh"]
-[ext_resource type="Script" path="res://scripts/music_controller.gd" id="2_5cxfs"]
-[ext_resource type="AudioStream" uid="uid://bff2ea4r0h0cd" path="res://sound/day_themes/day_1_2_theme.ogg" id="3_dl8uy"]
-[ext_resource type="AudioStream" uid="uid://b6wu3yeknmaf5" path="res://sound/day_themes/day_3_4_theme.ogg" id="4_escij"]
-[ext_resource type="AudioStream" uid="uid://dffj7n53yjeot" path="res://sound/day_themes/day_5_theme.ogg" id="5_ttyhd"]
-[ext_resource type="AudioStream" uid="uid://bbbj3uvfrts2n" path="res://sound/day_themes/prep_percussion.ogg" id="6_rjisg"]
-
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gyvgg"]
-clip_count = 3
-clip_0/name = &"Early"
-clip_0/stream = ExtResource("3_dl8uy")
-clip_0/auto_advance = 0
-clip_1/name = &"Mid"
-clip_1/stream = ExtResource("4_escij")
-clip_1/auto_advance = 0
-clip_2/name = &"Late"
-clip_2/stream = ExtResource("5_ttyhd")
-clip_2/auto_advance = 0
-_transitions = {
-Vector2i(-1, -1): {
-"fade_beats": 8,
-"fade_mode": 3,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(0, 1): {
-"fade_beats": 8,
-"fade_mode": 3,
-"from_time": 2,
-"to_time": 0
-},
-Vector2i(1, 2): {
-"fade_beats": 8,
-"fade_mode": 3,
-"from_time": 2,
-"to_time": 0
-}
-}
-
-[sub_resource type="Animation" id="Animation_1xml2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PercussionPlayer:volume_db")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(0.241484),
-"update": 0,
-"values": [-80.0]
-}
-
-[sub_resource type="Animation" id="Animation_p4uek"]
-resource_name = "fade_in"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PercussionPlayer:volume_db")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(0.241484, 0.241484),
-"update": 0,
-"values": [-80.0, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwpoe"]
-_data = {
-"RESET": SubResource("Animation_1xml2"),
-"fade_in": SubResource("Animation_p4uek")
-}
+[ext_resource type="PackedScene" uid="uid://cr4y2rkn2fckg" path="res://scenes/music_conductor.tscn" id="2_3dua3"]
 
 [node name="Root" type="Node"]
 
@@ -82,23 +9,4 @@ _data = {
 
 [node name="AudioNodes" type="Node" parent="."]
 
-[node name="MusicController" type="Node" parent="AudioNodes"]
-script = ExtResource("2_5cxfs")
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="AudioNodes/MusicController"]
-stream = SubResource("AudioStreamInteractive_gyvgg")
-autoplay = true
-
-[node name="PercussionPlayer" type="AudioStreamPlayer" parent="AudioNodes/MusicController"]
-stream = ExtResource("6_rjisg")
-volume_db = -80.0
-autoplay = true
-
-[node name="PercussionAnimator" type="AnimationPlayer" parent="AudioNodes/MusicController/PercussionPlayer"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_dwpoe")
-}
-
-[connection signal="enter_prep_area" from="GameView" to="AudioNodes/MusicController" method="_enter_prep_station"]
-[connection signal="exit_prep_area" from="GameView" to="AudioNodes/MusicController" method="_exit_prep_station"]
+[node name="MusicConductor" parent="AudioNodes" instance=ExtResource("2_3dua3")]

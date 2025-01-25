@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://cr4y2rkn2fckg"]
+
+[ext_resource type="Script" path="res://scripts/music_controller.gd" id="1_7nf58"]
+[ext_resource type="AudioStream" uid="uid://bff2ea4r0h0cd" path="res://sound/day_themes/day_1_2_theme.ogg" id="2_m8rfv"]
+[ext_resource type="AudioStream" uid="uid://b6wu3yeknmaf5" path="res://sound/day_themes/day_3_4_theme.ogg" id="3_f21h2"]
+[ext_resource type="AudioStream" uid="uid://dffj7n53yjeot" path="res://sound/day_themes/day_5_theme.ogg" id="4_8pxgb"]
+[ext_resource type="AudioStream" uid="uid://bbbj3uvfrts2n" path="res://sound/day_themes/prep_percussion.ogg" id="5_x57cl"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gyvgg"]
+clip_count = 3
+clip_0/name = &"Early"
+clip_0/stream = ExtResource("2_m8rfv")
+clip_0/auto_advance = 0
+clip_1/name = &"Mid"
+clip_1/stream = ExtResource("3_f21h2")
+clip_1/auto_advance = 0
+clip_2/name = &"Late"
+clip_2/stream = ExtResource("4_8pxgb")
+clip_2/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 8,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 0
+},
+Vector2i(0, 1): {
+"fade_beats": 8,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 0
+},
+Vector2i(1, 2): {
+"fade_beats": 8,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 0
+}
+}
+
+[sub_resource type="Animation" id="Animation_1xml2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PercussionPlayer:volume_db")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.241484),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="Animation" id="Animation_p4uek"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PercussionPlayer:volume_db")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.241484, 0.241484),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dwpoe"]
+_data = {
+"RESET": SubResource("Animation_1xml2"),
+"fade_in": SubResource("Animation_p4uek")
+}
+
+[node name="MusicConductor" type="Node"]
+script = ExtResource("1_7nf58")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_gyvgg")
+autoplay = true
+
+[node name="PercussionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_x57cl")
+volume_db = -80.0
+autoplay = true
+
+[node name="PercussionAnimator" type="AnimationPlayer" parent="PercussionPlayer"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_dwpoe")
+}
