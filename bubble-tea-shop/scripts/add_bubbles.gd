@@ -9,6 +9,7 @@ signal handing_drink_to_customer
 @onready var bubbleCollection = $Nozzle/BubbleGenerator/BubbleCollection
 @onready var bubbleMax = $Nozzle/BubbleGenerator.BUBBLE_MAX_COUNT
 @onready var customer_handout_timer = $CustomerHandoutTimer
+@onready var lid = $CupEmpty/Lid
 
 var isHeld = false
 var button_index = 0			#Index of the button that is being held
@@ -35,7 +36,7 @@ func _input(event):
 		return
 	
 	if event.is_action_pressed("test_cup_fill"):
-		_lid_placed = true
+		_set_lid(true)
 
 func _process(delta):
 	increment_slider(button_index)
@@ -63,7 +64,7 @@ func hand_drink_to_customer():
 		handing_drink_to_customer.emit()
 
 func reset_cup():
-	_lid_placed = false
+	_set_lid(false)
 	remaining_capacity = 100
 	liquid_shared_material.set_shader_parameter("Alpha", 0)
 	$"Prep-station"/ButtonPanels/AnimationPlayer.play("RESET")
@@ -83,9 +84,13 @@ func _on_button_button_up(id) -> void:
 		bubble_capacity = amount_added
 	elif id == 1:
 		$"Prep-station"/ButtonPanels/AnimationPlayer.play("Buttons_End")
-		_lid_placed = true
+		_set_lid(true)
 	
 	if amount_added > 0:
 		remaining_capacity -= amount_added
 		amount_added = 0
 	liquid_cap = remaining_capacity
+
+func _set_lid(value: bool):
+	_lid_placed = value
+	lid.visible = value

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ceuunfs0gh6vt"]
+[gd_scene load_steps=23 format=3 uid="uid://ceuunfs0gh6vt"]
 
 [ext_resource type="Script" path="res://scripts/add_bubbles.gd" id="1_8glki"]
 [ext_resource type="Texture2D" uid="uid://djlcepncshb5k" path="res://sprites/enviroment/Prep-station.png" id="2_yubql"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" path="res://scenes/tea_generator.tscn" id="14_ochju"]
 [ext_resource type="Texture2D" uid="uid://bseaeywvv4fj0" path="res://sprites/Liquid.png" id="15_0lqcg"]
 [ext_resource type="Material" uid="uid://b66usc0mremib" path="res://materials/liquid_material.tres" id="16_cgbwc"]
+[ext_resource type="Texture2D" uid="uid://bf15pg6cvdhjo" path="res://sprites/enviroment/Lid.png" id="18_bcyww"]
 
 [sub_resource type="Animation" id="Animation_mnafy"]
 resource_name = "Buttons_End"
@@ -218,6 +219,12 @@ polygon = PackedVector2Array(69, -180, 53, 90, 20, 102, -17, 102, -53, 92, -65, 
 show_behind_parent = true
 material = ExtResource("16_cgbwc")
 texture = ExtResource("15_0lqcg")
+
+[node name="Lid" type="Sprite2D" parent="CupEmpty"]
+visible = false
+modulate = Color(1, 1, 1, 0.666667)
+position = Vector2(1, -92)
+texture = ExtResource("18_bcyww")
 
 [node name="LiquidSlider" type="VSlider" parent="."]
 offset_left = 47.0

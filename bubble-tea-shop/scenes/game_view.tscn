@@ -124,6 +124,7 @@ days = Array[ExtResource("2_1c1ab")]([ExtResource("3_50c75"), ExtResource("4_d1y
 [node name="SceneButtons" type="Node" parent="."]
 
 [node name="Button-L" type="Button" parent="SceneButtons"]
+visible = false
 z_index = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -143,6 +144,7 @@ flat = true
 icon_alignment = 1
 
 [node name="Button-R" type="Button" parent="SceneButtons"]
+visible = false
 z_index = 3
 anchors_preset = 8
 anchor_left = 0.5
