@@ -1,0 +1,8 @@
+~ start
+Logan: They’re doing lots of scans and tests on my Aunt
+Logan: She's still in the hospital after the car accident.
+- Do you miss her?
+	Logan: Yes, it’s not the same without her around.
+- Do know if she’ll be out soon?
+	Logan: No.
+=> END

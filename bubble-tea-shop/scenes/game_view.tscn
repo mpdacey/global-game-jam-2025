@@ -1,19 +1,21 @@
-[gd_scene load_steps=26 format=3 uid="uid://b7xkr6jax36mq"]
+[gd_scene load_steps=28 format=3 uid="uid://b7xkr6jax36mq"]
 
 [ext_resource type="Script" path="res://scripts/game_view.gd" id="1_6q6dj"]
 [ext_resource type="Texture2D" uid="uid://dfo2ndmjqtyuu" path="res://sprites/sources/Arrow.png" id="1_7q07m"]
 [ext_resource type="Script" path="res://scripts/dialogue_controller.gd" id="2_0r6f7"]
 [ext_resource type="Script" path="res://scripts/resource_scripts/day_resource_script.gd" id="2_3jffu"]
 [ext_resource type="Script" path="res://scripts/day_controller.gd" id="2_6rhaf"]
+[ext_resource type="Resource" uid="uid://cav0e13oevnu" path="res://resources/days/day_5.tres" id="3_67yrf"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_bun35"]
-[ext_resource type="Resource" uid="uid://dt4cpyiee6j1q" path="res://resources/days/day_1.tres" id="3_dqn5v"]
-[ext_resource type="Resource" uid="uid://6tsmlfpyfgnp" path="res://resources/days/Day3.tres" id="3_n23l6"]
+[ext_resource type="Resource" uid="uid://bhiim2bjuwnw2" path="res://resources/days/day_1.tres" id="3_dqn5v"]
+[ext_resource type="Resource" uid="uid://cv2va71uu54tx" path="res://resources/days/day_3.tres" id="3_n23l6"]
 [ext_resource type="Texture2D" uid="uid://d4np0ovjdqsbm" path="res://sprites/enviroment/Counter.png" id="3_qg7dw"]
+[ext_resource type="Resource" uid="uid://be8jvssxtdqrw" path="res://resources/days/day_4.tres" id="3_ux8gc"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_5bukm"]
 [ext_resource type="Resource" uid="uid://cfsq4m4g8w7kj" path="res://resources/days/day_2.tres" id="4_dn03x"]
 [ext_resource type="Script" path="res://scripts/custom_button/balloon.gd" id="5_4bh7q"]
 [ext_resource type="Texture2D" uid="uid://btcb1e0jt5h0r" path="res://sprites/enviroment/Background.png" id="5_crb3j"]
-[ext_resource type="PackedScene" uid="uid://dqyypyolrrshx" path="res://scenes/character_portrait.tscn" id="6_tr44w"]
+[ext_resource type="PackedScene" path="res://scenes/character_portrait.tscn" id="6_tr44w"]
 [ext_resource type="PackedScene" uid="uid://ceuunfs0gh6vt" path="res://scenes/add_bubbles.tscn" id="7_xvir2"]
 [ext_resource type="Script" path="res://scripts/character_event_controller.gd" id="9_yaugl"]
 
@@ -117,12 +119,12 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [node name="GameView" type="Node"]
 script = ExtResource("1_6q6dj")
-days = Array[ExtResource("2_3jffu")]([ExtResource("3_dqn5v"), ExtResource("4_dn03x"), ExtResource("3_n23l6")])
+days = Array[ExtResource("2_3jffu")]([ExtResource("3_dqn5v"), ExtResource("4_dn03x"), ExtResource("3_n23l6"), ExtResource("3_ux8gc"), ExtResource("3_67yrf")])
 
 [node name="DayController" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_6rhaf")
-current_day = ExtResource("3_n23l6")
+current_day = ExtResource("3_67yrf")
 
 [node name="CharacterEventController" type="Node" parent="."]
 unique_name_in_owner = true
@@ -155,70 +157,31 @@ texture_filter = 1
 texture = ExtResource("5_crb3j")
 
 [node name="PrepView" parent="." instance=ExtResource("7_xvir2")]
-position = Vector2(385, 120)
-
-[node name="ButtonPanelL" parent="PrepView" index="1"]
-position = Vector2(5.5, -154)
-
-[node name="ButtonPanelR" parent="PrepView" index="2"]
-position = Vector2(276.5, -154)
+position = Vector2(520, 0)
 
 [node name="BubbleSlider" parent="PrepView" index="5"]
-offset_left = 144.5
-offset_top = -256.0
-offset_right = 160.5
-offset_bottom = -23.0
-metadata/_edit_use_anchors_ = true
+offset_left = -84.0
+offset_top = -141.0
+offset_right = -68.0
+offset_bottom = 92.0
 
 [node name="BubbleButton" parent="PrepView" index="6"]
-offset_left = 245.5
-offset_top = -248.0
-offset_right = 389.5
-offset_bottom = -210.0
-metadata/_edit_use_anchors_ = true
-
-[node name="BubbleButton2" parent="PrepView" index="7"]
-offset_left = 244.5
-offset_right = 309.5
-metadata/_edit_use_anchors_ = true
-
-[node name="BubbleButton3" parent="PrepView" index="8"]
-offset_left = 244.5
-offset_right = 309.5
-metadata/_edit_use_anchors_ = true
-
-[node name="BubbleButton4" parent="PrepView" index="9"]
-offset_left = 244.5
-offset_right = 309.5
-metadata/_edit_use_anchors_ = true
+offset_left = 15.0
+offset_top = -111.0
+offset_right = 159.0
+offset_bottom = -73.0
 
 [node name="LiquidSlider" parent="PrepView" index="10"]
-offset_left = 118.5
-offset_top = -255.0
-offset_right = 134.5
-offset_bottom = -22.0
-metadata/_edit_use_anchors_ = true
+offset_left = -44.0
+offset_top = -141.0
+offset_right = -28.0
+offset_bottom = 92.0
 
 [node name="LiquidButton" parent="PrepView" index="11"]
-offset_left = -26.5
-offset_top = -247.0
-offset_right = 117.5
-metadata/_edit_use_anchors_ = true
-
-[node name="LiquidButton2" parent="PrepView" index="12"]
-offset_left = -26.5
-offset_right = 38.5
-metadata/_edit_use_anchors_ = true
-
-[node name="LiquidButton3" parent="PrepView" index="13"]
-offset_left = -27.5
-offset_right = 37.5
-metadata/_edit_use_anchors_ = true
-
-[node name="LiquidButton4" parent="PrepView" index="14"]
-offset_left = -27.5
-offset_right = 37.5
-metadata/_edit_use_anchors_ = true
+offset_left = 15.0
+offset_top = -13.0
+offset_right = 159.0
+offset_bottom = 25.0
 
 [node name="ConvoView" type="Sprite2D" parent="."]
 modulate = Color(0, 0.888248, 0.275956, 1)
@@ -356,7 +319,6 @@ icon = ExtResource("1_7q07m")
 flat = true
 icon_alignment = 1
 
-[connection signal="start_day" from="." to="DayController" method="set_day"]
 [connection signal="character_entered" from="CounterView/CounterTop/CharacterPortrait" to="CharacterEventController" method="display_dialogue"]
 [connection signal="character_exited" from="CounterView/CounterTop/CharacterPortrait" to="DayController" method="play_next_event"]
 [connection signal="character_is_exiting" from="CounterView/CounterTop/CharacterPortrait" to="ConvoView/DialogueNodes/DialogueController" method="clear_dialogue"]

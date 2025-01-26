@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://bhbuftr8f3la1"]
+
+[ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_j1lko"]
+[ext_resource type="Resource" uid="uid://comkmdt6y7b87" path="res://resources/dialogue/Kai3.dialogue" id="2_l1hlk"]
+[ext_resource type="Texture2D" uid="uid://4l3lttpqqc0i" path="res://sprites/portraits/kai.png" id="2_tss5r"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="3_2abkn"]
+
+[sub_resource type="Resource" id="Resource_ii76x"]
+script = ExtResource("1_j1lko")
+flavour = 0
+ratio = 0.5
+
+[resource]
+script = ExtResource("3_2abkn")
+bubbles = SubResource("Resource_ii76x")
+liquid = 2
+character_sprite = ExtResource("2_tss5r")
+dialogue = ExtResource("2_l1hlk")

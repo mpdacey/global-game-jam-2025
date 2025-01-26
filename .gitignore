@@ -13,3 +13,5 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+bubble-tea-shop/.DS_Store
+bubble-tea-shop/resources/.DS_Store
