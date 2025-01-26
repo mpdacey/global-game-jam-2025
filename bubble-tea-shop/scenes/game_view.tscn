@@ -298,10 +298,14 @@ script = ExtResource("5_4bh7q")
 [node name="AddBubbles" parent="." instance=ExtResource("7_xvir2")]
 position = Vector2(385, 120)
 
+[node name="CustomerHandoutTimer" parent="AddBubbles" index="4"]
+wait_time = 2.0
+
 [connection signal="start_day" from="." to="DayController" method="set_day"]
 [connection signal="pressed" from="SceneButtons/Button-L" to="." method="_on_button_l_pressed"]
 [connection signal="pressed" from="SceneButtons/Button-L" to="AddBubbles" method="hand_drink_to_customer"]
 [connection signal="pressed" from="SceneButtons/Button-R" to="." method="_on_button_r_pressed"]
+[connection signal="day_completed" from="DayController" to="." method="load_next_day"]
 [connection signal="character_entered" from="CounterView/CounterTop/CharacterPortrait" to="CharacterEventController" method="display_dialogue"]
 [connection signal="character_entered" from="CounterView/CounterTop/CharacterPortrait" to="SceneButtons/Button-L" method="set_visible" binds= [true]]
 [connection signal="character_entered" from="CounterView/CounterTop/CharacterPortrait" to="SceneButtons/Button-R" method="set_visible" binds= [true]]

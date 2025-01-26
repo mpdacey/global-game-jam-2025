@@ -60,6 +60,7 @@ func hand_drink_to_customer():
 func reset_cup():
 	_lid_placed = false
 	liquid_shared_material.set_shader_parameter("Alpha", 0)
+	$"Prep-station"/ButtonPanels/AnimationPlayer.play("RESET")
 
 func _on_button_button_down(id) -> void:
 	#Set held boolean to true
