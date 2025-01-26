@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ceuunfs0gh6vt"]
+[gd_scene load_steps=22 format=3 uid="uid://ceuunfs0gh6vt"]
 
 [ext_resource type="Script" path="res://scripts/add_bubbles.gd" id="1_8glki"]
 [ext_resource type="Texture2D" uid="uid://djlcepncshb5k" path="res://sprites/enviroment/Prep-station.png" id="2_yubql"]
@@ -14,25 +14,180 @@
 [ext_resource type="Texture2D" uid="uid://cogactj2j6s3t" path="res://sprites/sources/Peach.png" id="11_vf4qq"]
 [ext_resource type="Texture2D" uid="uid://by4luntfvqr2o" path="res://sprites/sources/Coconut.png" id="12_14f7h"]
 [ext_resource type="Texture2D" uid="uid://bp3k5x5d5c2sd" path="res://sprites/sources/Matcha.png" id="13_6nh5n"]
+[ext_resource type="PackedScene" uid="uid://c10xi81wli07x" path="res://scenes/tea_generator.tscn" id="14_ochju"]
+[ext_resource type="Texture2D" uid="uid://bseaeywvv4fj0" path="res://sprites/Liquid.png" id="15_0lqcg"]
+[ext_resource type="Material" uid="uid://b66usc0mremib" path="res://materials/liquid_material.tres" id="16_cgbwc"]
 
-[node name="AddBubbles" type="Node2D"]
+[sub_resource type="Animation" id="Animation_mnafy"]
+resource_name = "Buttons_End"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ButtonPanelL:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(660.5, -50), Vector2(660.5, -411)]
+}
+
+[sub_resource type="Animation" id="Animation_wndct"]
+resource_name = "Buttons_Up"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(660.5, -50), Vector2(660.5, -411)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ButtonPanelL:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(660.5, -411), Vector2(660.5, -50)]
+}
+
+[sub_resource type="Animation" id="Animation_8jvkv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(660.5, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ButtonPanelL:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(660.5, -411)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_572jw"]
+_data = {
+"Buttons_End": SubResource("Animation_mnafy"),
+"Buttons_Up": SubResource("Animation_wndct"),
+"RESET": SubResource("Animation_8jvkv")
+}
+
+[node name="AddBubbles" type="Node2D" node_paths=PackedStringArray("tea_sprite")]
 script = ExtResource("1_8glki")
+tea_sprite = NodePath("CupEmpty/Liquid")
+liquid_colors = Array[Color]([Color(0.211765, 0.588235, 0.243137, 1), Color(0.960784, 0.423529, 0.521569, 1), Color(0.968627, 0.596078, 0.435294, 1), Color(0.607843, 0.878431, 0.878431, 1)])
 
 [node name="Prep-station" type="Sprite2D" parent="."]
 position = Vector2(135, -120)
 texture = ExtResource("2_yubql")
 
-[node name="ButtonPanelL" type="Sprite2D" parent="."]
-position = Vector2(-1, -154)
+[node name="ButtonPanels" type="Node" parent="Prep-station"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Prep-station/ButtonPanels"]
+root_node = NodePath("../ButtonPanelR")
+libraries = {
+"": SubResource("AnimationLibrary_572jw")
+}
+speed_scale = 1.3
+
+[node name="ButtonPanelL" type="Sprite2D" parent="Prep-station/ButtonPanels"]
+position = Vector2(660.5, -411)
 texture = ExtResource("3_xrt83")
 region_enabled = true
 region_rect = Rect2(26.5409, 5.90694, 75.0192, 201.844)
 
-[node name="ButtonPanelR" type="Sprite2D" parent="."]
-position = Vector2(270, -154)
+[node name="LiquidButton" type="Button" parent="Prep-station/ButtonPanels/ButtonPanelL"]
+offset_left = -32.0
+offset_top = -91.0
+offset_right = 33.0
+offset_bottom = -55.0
+icon = ExtResource("10_gnbn8")
+flat = true
+
+[node name="LiquidButton2" type="Button" parent="Prep-station/ButtonPanels/ButtonPanelL"]
+offset_left = -32.0
+offset_top = -45.0
+offset_right = 33.0
+offset_bottom = -9.0
+icon = ExtResource("11_vf4qq")
+flat = true
+
+[node name="LiquidButton3" type="Button" parent="Prep-station/ButtonPanels/ButtonPanelL"]
+offset_left = -33.0
+offset_top = 3.0
+offset_right = 32.0
+offset_bottom = 39.0
+icon = ExtResource("12_14f7h")
+flat = true
+
+[node name="LiquidButton4" type="Button" parent="Prep-station/ButtonPanels/ButtonPanelL"]
+offset_left = -33.0
+offset_top = 49.0
+offset_right = 32.0
+offset_bottom = 85.0
+icon = ExtResource("13_6nh5n")
+flat = true
+
+[node name="ButtonPanelR" type="Sprite2D" parent="Prep-station/ButtonPanels"]
+position = Vector2(660.5, -50)
 texture = ExtResource("3_xrt83")
 region_enabled = true
 region_rect = Rect2(26.5409, 5.90694, 75.0192, 201.844)
+
+[node name="BubbleButton" type="Button" parent="Prep-station/ButtonPanels/ButtonPanelR"]
+offset_left = -32.0
+offset_top = -91.0
+offset_right = 33.0
+offset_bottom = -54.0
+icon = ExtResource("6_ggg6g")
+flat = true
+
+[node name="BubbleButton2" type="Button" parent="Prep-station/ButtonPanels/ButtonPanelR"]
+offset_left = -32.0
+offset_top = -45.0
+offset_right = 33.0
+offset_bottom = -8.0
+icon = ExtResource("7_wubqb")
+flat = true
+
+[node name="BubbleButton3" type="Button" parent="Prep-station/ButtonPanels/ButtonPanelR"]
+offset_left = -32.0
+offset_top = 3.0
+offset_right = 33.0
+offset_bottom = 40.0
+icon = ExtResource("8_4wt6q")
+flat = true
+
+[node name="BubbleButton4" type="Button" parent="Prep-station/ButtonPanels/ButtonPanelR"]
+offset_left = -32.0
+offset_top = 49.0
+offset_right = 33.0
+offset_bottom = 86.0
+icon = ExtResource("9_enwm7")
+flat = true
 
 [node name="Nozzle" type="Sprite2D" parent="."]
 z_index = 1
@@ -42,10 +197,12 @@ region_enabled = true
 region_rect = Rect2(124.297, 0, 120.583, 47.7513)
 
 [node name="BubbleGenerator" parent="Nozzle" instance=ExtResource("5_tqae6")]
-z_index = -1
+
+[node name="TeaGenerator" parent="Nozzle" node_paths=PackedStringArray("tea_sprite") instance=ExtResource("14_ochju")]
+tea_sprite = NodePath("../../CupEmpty/Liquid")
 
 [node name="CupEmpty" type="Sprite2D" parent="."]
-z_index = 1
+z_index = 2
 position = Vector2(135, -115)
 texture = ExtResource("5_pc73p")
 region_enabled = true
@@ -57,103 +214,46 @@ region_rect = Rect2(124.168, 74.6512, 128.632, 214.151)
 build_mode = 1
 polygon = PackedVector2Array(69, -180, 53, 90, 20, 102, -17, 102, -53, 92, -65, -188)
 
-[node name="BubbleSlider" type="VSlider" parent="."]
-offset_left = 343.0
-offset_top = -265.0
-offset_right = 359.0
-offset_bottom = -32.0
-
-[node name="BubbleButton" type="Button" parent="."]
-offset_left = 238.0
-offset_top = -245.0
-offset_right = 303.0
-offset_bottom = -208.0
-icon = ExtResource("6_ggg6g")
-flat = true
-
-[node name="BubbleButton2" type="Button" parent="."]
-offset_left = 238.0
-offset_top = -199.0
-offset_right = 303.0
-offset_bottom = -162.0
-icon = ExtResource("7_wubqb")
-flat = true
-
-[node name="BubbleButton3" type="Button" parent="."]
-offset_left = 238.0
-offset_top = -151.0
-offset_right = 303.0
-offset_bottom = -114.0
-icon = ExtResource("8_4wt6q")
-flat = true
-
-[node name="BubbleButton4" type="Button" parent="."]
-offset_left = 238.0
-offset_top = -105.0
-offset_right = 303.0
-offset_bottom = -68.0
-icon = ExtResource("9_enwm7")
-flat = true
+[node name="Liquid" type="Sprite2D" parent="CupEmpty"]
+show_behind_parent = true
+material = ExtResource("16_cgbwc")
+texture = ExtResource("15_0lqcg")
 
 [node name="LiquidSlider" type="VSlider" parent="."]
-offset_left = 383.0
+offset_left = 47.0
 offset_top = -265.0
-offset_right = 399.0
+offset_right = 63.0
 offset_bottom = -32.0
 
-[node name="LiquidButton" type="Button" parent="."]
-offset_left = -33.0
-offset_top = -245.0
-offset_right = 32.0
-offset_bottom = -209.0
-icon = ExtResource("10_gnbn8")
-flat = true
-
-[node name="LiquidButton2" type="Button" parent="."]
-offset_left = -33.0
-offset_top = -199.0
-offset_right = 32.0
-offset_bottom = -163.0
-icon = ExtResource("11_vf4qq")
-flat = true
-
-[node name="LiquidButton3" type="Button" parent="."]
-offset_left = -34.0
-offset_top = -151.0
-offset_right = 31.0
-offset_bottom = -115.0
-icon = ExtResource("12_14f7h")
-flat = true
-
-[node name="LiquidButton4" type="Button" parent="."]
-offset_left = -34.0
-offset_top = -105.0
-offset_right = 31.0
-offset_bottom = -69.0
-icon = ExtResource("13_6nh5n")
-flat = true
-
-[connection signal="button_down" from="BubbleButton" to="." method="_on_button_button_down" binds= [0]]
-[connection signal="button_down" from="BubbleButton" to="Nozzle/BubbleGenerator" method="_on_button_pressed" binds= [3]]
-[connection signal="button_up" from="BubbleButton" to="Nozzle/BubbleGenerator" method="_on_button_released"]
-[connection signal="button_up" from="BubbleButton" to="." method="_on_button_button_up" binds= [0]]
-[connection signal="button_down" from="BubbleButton2" to="." method="_on_button_button_down" binds= [0]]
-[connection signal="button_down" from="BubbleButton2" to="Nozzle/BubbleGenerator" method="_on_button_pressed" binds= [2]]
-[connection signal="button_up" from="BubbleButton2" to="Nozzle/BubbleGenerator" method="_on_button_released"]
-[connection signal="button_up" from="BubbleButton2" to="." method="_on_button_button_up" binds= [0]]
-[connection signal="button_down" from="BubbleButton3" to="." method="_on_button_button_down" binds= [0]]
-[connection signal="button_down" from="BubbleButton3" to="Nozzle/BubbleGenerator" method="_on_button_pressed" binds= [0]]
-[connection signal="button_up" from="BubbleButton3" to="Nozzle/BubbleGenerator" method="_on_button_released"]
-[connection signal="button_up" from="BubbleButton3" to="." method="_on_button_button_up" binds= [0]]
-[connection signal="button_down" from="BubbleButton4" to="." method="_on_button_button_down" binds= [0]]
-[connection signal="button_down" from="BubbleButton4" to="Nozzle/BubbleGenerator" method="_on_button_pressed" binds= [1]]
-[connection signal="button_up" from="BubbleButton4" to="Nozzle/BubbleGenerator" method="_on_button_released"]
-[connection signal="button_up" from="BubbleButton4" to="." method="_on_button_button_up" binds= [0]]
-[connection signal="button_down" from="LiquidButton" to="." method="_on_button_button_down" binds= [1]]
-[connection signal="button_up" from="LiquidButton" to="." method="_on_button_button_up" binds= [1]]
-[connection signal="button_down" from="LiquidButton2" to="." method="_on_button_button_down" binds= [1]]
-[connection signal="button_up" from="LiquidButton2" to="." method="_on_button_button_up" binds= [1]]
-[connection signal="button_down" from="LiquidButton3" to="." method="_on_button_button_down" binds= [1]]
-[connection signal="button_up" from="LiquidButton3" to="." method="_on_button_button_up" binds= [1]]
-[connection signal="button_down" from="LiquidButton4" to="." method="_on_button_button_down" binds= [1]]
-[connection signal="button_up" from="LiquidButton4" to="." method="_on_button_button_up" binds= [1]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton" to="." method="_on_button_button_down" binds= [1]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton" to="Nozzle/TeaGenerator" method="_on_liquid_button_button_down" binds= [1]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton" to="." method="_on_button_button_up" binds= [1]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton" to="Nozzle/TeaGenerator" method="_on_liquid_button_button_up" binds= [1]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton2" to="." method="_on_button_button_down" binds= [1]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton2" to="Nozzle/TeaGenerator" method="_on_liquid_button_button_down" binds= [2]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton2" to="." method="_on_button_button_up" binds= [1]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton2" to="Nozzle/TeaGenerator" method="_on_liquid_button_button_up" binds= [2]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton3" to="." method="_on_button_button_down" binds= [1]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton3" to="Nozzle/TeaGenerator" method="_on_liquid_button_button_down" binds= [3]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton3" to="." method="_on_button_button_up" binds= [1]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton3" to="Nozzle/TeaGenerator" method="_on_liquid_button_button_up" binds= [3]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton4" to="." method="_on_button_button_down" binds= [1]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton4" to="Nozzle/TeaGenerator" method="_on_liquid_button_button_down" binds= [0]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton4" to="." method="_on_button_button_up" binds= [1]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelL/LiquidButton4" to="Nozzle/TeaGenerator" method="_on_liquid_button_button_up" binds= [0]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton" to="." method="_on_button_button_down" binds= [0]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton" to="Nozzle/BubbleGenerator" method="_on_button_pressed" binds= [3]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton" to="Nozzle/BubbleGenerator" method="_on_button_released"]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton" to="." method="_on_button_button_up" binds= [0]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton2" to="." method="_on_button_button_down" binds= [0]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton2" to="Nozzle/BubbleGenerator" method="_on_button_pressed" binds= [2]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton2" to="Nozzle/BubbleGenerator" method="_on_button_released"]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton2" to="." method="_on_button_button_up" binds= [0]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton3" to="." method="_on_button_button_down" binds= [0]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton3" to="Nozzle/BubbleGenerator" method="_on_button_pressed" binds= [0]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton3" to="Nozzle/BubbleGenerator" method="_on_button_released"]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton3" to="." method="_on_button_button_up" binds= [0]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton4" to="." method="_on_button_button_down" binds= [0]]
+[connection signal="button_down" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton4" to="Nozzle/BubbleGenerator" method="_on_button_pressed" binds= [1]]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton4" to="Nozzle/BubbleGenerator" method="_on_button_released"]
+[connection signal="button_up" from="Prep-station/ButtonPanels/ButtonPanelR/BubbleButton4" to="." method="_on_button_button_up" binds= [0]]

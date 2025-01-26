@@ -1,0 +1,131 @@
+[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://btk3kj6l0tyj8"]
+
+[ext_resource type="Texture2D" uid="uid://bseaeywvv4fj0" path="res://sprites/Liquid.png" id="1_wjh3t"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_m3q1t"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_7neje"]
+parameter_name = "Alpha"
+hint = 1
+min = 0.5
+max = 15.0
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_11gbo"]
+texture = ExtResource("1_wjh3t")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_gvb42"]
+default_input_values = [0, 0.0, 1, 0.895]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_0fafr"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 1.0]
+operator = 5
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_i16gj"]
+output_port_for_preview = 0
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_qpb30"]
+parameter_name = "LiquidColour"
+default_value_enabled = true
+default_value = Color(0.960784, 0.423529, 0.521569, 1)
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_jfevv"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_2wxfx"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 1
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_tc6qb"]
+output_port_for_preview = 1
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 LiquidColour : source_color = vec4(0.960784, 0.423529, 0.521569, 1.000000);
+uniform float Alpha : hint_range(0.5, 15);
+uniform sampler2D tex_frg_13;
+
+
+
+void fragment() {
+// ColorConstant:7
+	vec4 n_out7p0 = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+// ColorParameter:6
+	vec4 n_out6p0 = LiquidColour;
+
+
+// Input:10
+	vec2 n_out10p0 = UV;
+
+
+// VectorOp:8
+	vec2 n_in8p1 = vec2(0.00000, 0.00000);
+	vec2 n_out8p0 = n_out10p0 - n_in8p1;
+
+
+// VectorDecompose:9
+	float n_out9p0 = n_out8p0.x;
+	float n_out9p1 = n_out8p0.y;
+
+
+// FloatParameter:11
+	float n_out11p0 = Alpha;
+
+
+// FloatOp:4
+	float n_out4p0 = pow(n_out9p1, n_out11p0);
+
+
+// Mix:5
+	vec3 n_out5p0 = mix(vec3(n_out7p0.xyz), vec3(n_out6p0.xyz), vec3(n_out4p0));
+
+
+// Texture2D:13
+	vec4 n_out13p0 = texture(tex_frg_13, UV);
+
+
+// FloatOp:14
+	float n_out14p0 = n_out4p0 * n_out13p0.x;
+
+
+// Output:0
+	COLOR.rgb = n_out5p0;
+	COLOR.a = n_out14p0;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(900, 140)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatOp_0fafr")
+nodes/fragment/4/position = Vector2(-540, 280)
+nodes/fragment/5/node = SubResource("VisualShaderNodeMix_i16gj")
+nodes/fragment/5/position = Vector2(-100, 80)
+nodes/fragment/6/node = SubResource("VisualShaderNodeColorParameter_qpb30")
+nodes/fragment/6/position = Vector2(-540, 20)
+nodes/fragment/7/node = SubResource("VisualShaderNodeColorConstant_jfevv")
+nodes/fragment/7/position = Vector2(-460, -80)
+nodes/fragment/8/node = SubResource("VisualShaderNodeVectorOp_2wxfx")
+nodes/fragment/8/position = Vector2(-1040, 160)
+nodes/fragment/9/node = SubResource("VisualShaderNodeVectorDecompose_tc6qb")
+nodes/fragment/9/position = Vector2(-820, 160)
+nodes/fragment/10/node = SubResource("VisualShaderNodeInput_m3q1t")
+nodes/fragment/10/position = Vector2(-1380, 160)
+nodes/fragment/11/node = SubResource("VisualShaderNodeFloatParameter_7neje")
+nodes/fragment/11/position = Vector2(-900, 500)
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_11gbo")
+nodes/fragment/13/position = Vector2(-540, 620)
+nodes/fragment/14/node = SubResource("VisualShaderNodeFloatOp_gvb42")
+nodes/fragment/14/position = Vector2(140, 460)
+nodes/fragment/connections = PackedInt32Array(5, 0, 0, 0, 6, 0, 5, 1, 7, 0, 5, 0, 4, 0, 5, 2, 8, 0, 9, 0, 9, 1, 4, 0, 10, 0, 8, 0, 11, 0, 4, 1, 4, 0, 14, 0, 13, 0, 14, 1, 14, 0, 0, 1)

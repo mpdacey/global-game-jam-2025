@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b66usc0mremib"]
+
+[ext_resource type="Shader" uid="uid://btk3kj6l0tyj8" path="res://shaders/LiquidFill.tres" id="1_6ny4v"]
+
+[resource]
+shader = ExtResource("1_6ny4v")
+shader_parameter/LiquidColour = Color(0.960784, 0.423529, 0.521569, 1)
+shader_parameter/Alpha = null

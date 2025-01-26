@@ -1,51 +1,62 @@
 extends Node2D
 
-@onready var bubbleSlider = $BubbleSlider
-@onready var liquidSlider = $LiquidSlider
+@export var tea_sprite: Sprite2D
+@export var liquid_colors: Array[Color]
 
-var button_held = false
-var button_pressed = 0
+@onready var liquidSlider = $LiquidSlider
+@onready var bubbleCollection = $Nozzle/BubbleGenerator/BubbleCollection
+@onready var bubbleMax = $Nozzle/BubbleGenerator.BUBBLE_MAX_COUNT
+
+var isHeld = false
+var button_index = 0			#Index of the button that is being held
 var bubble_request = 0			#Amount of bubbles requested by the customer
 var remaining_capacity = 0		#Total remaining capacity of the slider
 var amount_added = 0			#Amount added with each button press; is reset with each button release
+var liquid_shared_material: ShaderMaterial = preload("res://materials/liquid_material.tres")
 
 func _ready():
-	bubble_request = randi_range(20, 80)
-	remaining_capacity = bubbleSlider.max_value
+	bubble_request = randi_range(15, bubbleMax)
+	remaining_capacity = 100
+	liquid_shared_material.set_shader_parameter("Alpha", 15)
 	
 	print("I would like " + str(bubble_request) + " bubbles please.")
 
 func _process(delta):
-	increment_slider(button_pressed)
+	increment_slider(button_index)
 
 func increment_slider(id) -> void:
-	var b = id
-	
 	#If cup capacity remains, add bubbles for as long as the button is held
-	if b == 0 and button_held and remaining_capacity > 0:
-		print("More bubbles!")
-		bubbleSlider.value += 1
-		liquidSlider.value += 1
-		amount_added += 1
+	if id == 0 and isHeld and remaining_capacity > 0:
+		liquidSlider.value = bubbleCollection.get_child_count()
+		amount_added = bubbleCollection.get_child_count()
 		
-		if bubbleSlider.value > bubble_request:
+		#If the added bubbles exceed the specified amount, print a line saying so
+		if bubbleCollection.get_child_count() > bubble_request:
 			print("Too many bubbles!")
 			
-	elif b == 1 and button_held and remaining_capacity > 0:
-		print("Adding liquid")
+	#Else, if the held button is for liquid, add liquid until cup is full
+	elif id == 1 and isHeld and remaining_capacity > 0:
 		liquidSlider.value += 1
-		amount_added += 1
-		
-
-func _on_button_button_down(button_id) -> void:
-	#Set held boolean to true
-	button_held = true
-	button_pressed = button_id
-
-func _on_button_button_up(button_id) -> void:
-	#Set held boolean to false, decrement remaining capacity and reset added amount
-	button_held = false
-	remaining_capacity -= amount_added
-	amount_added = 0
-	
+		remaining_capacity -= 1
+		liquid_shared_material.set_shader_parameter("Alpha", liquidSlider.value)
 	print("Remaining capacity is " + str(remaining_capacity))
+
+func _on_button_button_down(id) -> void:
+	#Set held boolean to true
+	isHeld = true
+	button_index = id
+	if id == 1:
+		liquid_shared_material.set_shader_parameter("LiquidColour", liquid_colors[id])
+
+func _on_button_button_up(id) -> void:
+	#Set held boolean to false, decrement remaining capacity and reset added amount
+	isHeld = false
+	if id == 0:
+		$"Prep-station"/ButtonPanels/AnimationPlayer.play("Buttons_Up")
+	elif id == 1:
+		$"Prep-station"/ButtonPanels/AnimationPlayer.play("Buttons_End")
+		
+	if amount_added > 0:
+		remaining_capacity -= amount_added
+		amount_added = 0
+	
