@@ -190,5 +190,3 @@ autoplay = "idle"
 [node name="CharacterAnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_glrq2")
 anim_player = NodePath("../CharacterAnimator")
-parameters/conditions/enter = false
-parameters/conditions/exit = false

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cn18bmf74fpgx"]
 
 [ext_resource type="PackedScene" uid="uid://b7xkr6jax36mq" path="res://scenes/game_view.tscn" id="1_xfveh"]
-[ext_resource type="PackedScene" path="res://scenes/music_conductor.tscn" id="2_3dua3"]
+[ext_resource type="PackedScene" uid="uid://cr4y2rkn2fckg" path="res://scenes/music_conductor.tscn" id="2_3dua3"]
 
 [node name="Root" type="Node"]
 

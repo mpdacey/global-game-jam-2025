@@ -1,0 +1,86 @@
+[gd_resource type="VisualShader" load_steps=8 format=3 uid="uid://fluyfmxh3w86"]
+
+[ext_resource type="Texture2D" uid="uid://brqn43ip8sfru" path="res://sprites/bubble.png" id="1_2jd81"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_yeb3o"]
+expanded_output_ports = [0]
+source = 5
+texture = ExtResource("1_2jd81")
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_6grmo"]
+parameter_name = "BubbleColour"
+default_value_enabled = true
+default_value = Color(0.499084, 0.160823, 0.783271, 1)
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_cdy8b"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 5.0]
+operator = 5
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_l8xsl"]
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_b51bd"]
+output_port_for_preview = 0
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_q5jtr"]
+parameter_name = "BubbleTexture"
+texture_filter = 1
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 BubbleColour : source_color = vec4(0.499084, 0.160823, 0.783271, 1.000000);
+uniform sampler2D BubbleTexture : filter_nearest;
+
+
+
+void fragment() {
+// ColorParameter:3
+	vec4 n_out3p0 = BubbleColour;
+
+
+// ColorConstant:5
+	vec4 n_out5p0 = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(BubbleTexture, UV);
+	float n_out2p4 = n_out2p0.a;
+
+
+// FloatOp:4
+	float n_in4p1 = 5.00000;
+	float n_out4p0 = pow(n_out2p0.x, n_in4p1);
+
+
+// Mix:6
+	vec3 n_out6p0 = mix(vec3(n_out3p0.xyz), vec3(n_out5p0.xyz), vec3(n_out4p0));
+
+
+// Output:0
+	COLOR.rgb = n_out6p0;
+	COLOR.a = n_out2p4;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(200, 40)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_yeb3o")
+nodes/fragment/2/position = Vector2(-880, 80)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_6grmo")
+nodes/fragment/3/position = Vector2(-560, 0)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatOp_cdy8b")
+nodes/fragment/4/position = Vector2(-620, 320)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorConstant_l8xsl")
+nodes/fragment/5/position = Vector2(-498.66, -127.157)
+nodes/fragment/6/node = SubResource("VisualShaderNodeMix_b51bd")
+nodes/fragment/6/position = Vector2(-160, 20)
+nodes/fragment/7/node = SubResource("VisualShaderNodeTexture2DParameter_q5jtr")
+nodes/fragment/7/position = Vector2(-1280, -100)
+nodes/fragment/connections = PackedInt32Array(3, 0, 6, 0, 5, 0, 6, 1, 7, 0, 2, 2, 6, 0, 0, 0, 2, 4, 0, 1, 4, 0, 6, 2, 2, 0, 4, 0)
