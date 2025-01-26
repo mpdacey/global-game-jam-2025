@@ -1,15 +1,21 @@
-[gd_scene load_steps=22 format=3 uid="uid://b7xkr6jax36mq"]
+[gd_scene load_steps=28 format=3 uid="uid://b7xkr6jax36mq"]
 
 [ext_resource type="Script" path="res://scripts/game_view.gd" id="1_6q6dj"]
 [ext_resource type="Texture2D" uid="uid://dfo2ndmjqtyuu" path="res://sprites/sources/Arrow.png" id="1_7q07m"]
 [ext_resource type="Script" path="res://scripts/dialogue_controller.gd" id="2_0r6f7"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/day_resource_script.gd" id="2_1c1ab"]
 [ext_resource type="Script" path="res://scripts/day_controller.gd" id="2_6rhaf"]
+[ext_resource type="Resource" uid="uid://bhiim2bjuwnw2" path="res://resources/days/day_1.tres" id="3_50c75"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_bun35"]
 [ext_resource type="Texture2D" uid="uid://d4np0ovjdqsbm" path="res://sprites/enviroment/Counter.png" id="3_qg7dw"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_5bukm"]
+[ext_resource type="Resource" uid="uid://cfsq4m4g8w7kj" path="res://resources/days/day_2.tres" id="4_d1yd5"]
 [ext_resource type="Script" path="res://scripts/custom_button/balloon.gd" id="5_4bh7q"]
+[ext_resource type="Resource" path="res://resources/days/day_3.tres" id="5_7d34p"]
 [ext_resource type="Texture2D" uid="uid://btcb1e0jt5h0r" path="res://sprites/enviroment/Background.png" id="5_crb3j"]
+[ext_resource type="Resource" path="res://resources/days/day_4.tres" id="6_mx4bl"]
 [ext_resource type="PackedScene" uid="uid://dqyypyolrrshx" path="res://scenes/character_portrait.tscn" id="6_tr44w"]
+[ext_resource type="Resource" path="res://resources/days/day_5.tres" id="7_lr78g"]
 [ext_resource type="PackedScene" uid="uid://ceuunfs0gh6vt" path="res://scenes/add_bubbles.tscn" id="7_xvir2"]
 [ext_resource type="Script" path="res://scripts/character_event_controller.gd" id="9_yaugl"]
 
@@ -113,6 +119,7 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [node name="GameView" type="Node"]
 script = ExtResource("1_6q6dj")
+days = Array[ExtResource("2_1c1ab")]([ExtResource("3_50c75"), ExtResource("4_d1yd5"), ExtResource("5_7d34p"), ExtResource("6_mx4bl"), ExtResource("7_lr78g")])
 
 [node name="SceneButtons" type="Node" parent="."]
 
@@ -291,6 +298,7 @@ script = ExtResource("5_4bh7q")
 [node name="AddBubbles" parent="." instance=ExtResource("7_xvir2")]
 position = Vector2(385, 120)
 
+[connection signal="start_day" from="." to="DayController" method="set_day"]
 [connection signal="pressed" from="SceneButtons/Button-L" to="." method="_on_button_l_pressed"]
 [connection signal="pressed" from="SceneButtons/Button-L" to="AddBubbles" method="hand_drink_to_customer"]
 [connection signal="pressed" from="SceneButtons/Button-R" to="." method="_on_button_r_pressed"]
@@ -303,6 +311,10 @@ position = Vector2(385, 120)
 [connection signal="character_is_exiting" from="CounterView/CounterTop/CharacterPortrait" to="ConvoView/DialogueNodes/DialogueController" method="clear_dialogue"]
 [connection signal="gui_input" from="ConvoView/DialogueNodes/2DPosition/Balloon" to="ConvoView/DialogueNodes/BalloonListController" method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="ConvoView/DialogueNodes/2DPosition/Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu" to="ConvoView/DialogueNodes/BalloonListController" method="_on_responses_menu_response_selected"]
+[connection signal="handing_drink_to_customer" from="AddBubbles" to="SceneButtons/Button-L" method="set_visible" binds= [false]]
+[connection signal="handing_drink_to_customer" from="AddBubbles" to="SceneButtons/Button-R" method="set_visible" binds= [false]]
+[connection signal="handing_drink_to_customer" from="AddBubbles" to="AddBubbles/CustomerHandoutTimer" method="start" binds= [0.0]]
 [connection signal="timeout" from="AddBubbles/CustomerHandoutTimer" to="CounterView/CounterTop/CharacterPortrait" method="exit_customer"]
+[connection signal="timeout" from="AddBubbles/CustomerHandoutTimer" to="AddBubbles/CustomerHandoutTimer" method="stop"]
 
 [editable path="AddBubbles"]

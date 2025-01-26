@@ -75,6 +75,7 @@ func _on_button_button_up(id) -> void:
 		$"Prep-station"/ButtonPanels/AnimationPlayer.play("Buttons_Up")
 	elif id == 1:
 		$"Prep-station"/ButtonPanels/AnimationPlayer.play("Buttons_End")
+		_lid_placed = true
 		
 	if amount_added > 0:
 		remaining_capacity -= amount_added

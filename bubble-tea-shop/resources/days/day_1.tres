@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_4qt7s"]
 [ext_resource type="Script" path="res://scripts/resource_scripts/day_resource_script.gd" id="2_vpn6j"]
-[ext_resource type="Resource" uid="uid://b5l5sd8gpqns6" path="res://resources/events/EasyPete1.tres" id="2_xqimp"]
+[ext_resource type="Resource" uid="uid://b41k513t75kc7" path="res://resources/events/EasyPete1.tres" id="2_xqimp"]
 
 [resource]
 script = ExtResource("2_vpn6j")
