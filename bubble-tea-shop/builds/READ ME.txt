@@ -1,0 +1,28 @@
+Available on GitHub: https://github.com/mpdacey/global-game-jam-2025
+Using Dialogue Manager 3 by Nathan Hoad:  https://godotengine.org/asset-library/asset/3654
+
+====== DESCRIPTION ======
+
+In Bubble Barista you run a bubble tea (boba) shop. But your customers don't place orders! They just tell you a bit about their day and you need to make their drink to match their feelings.
+
+The bubble colours/flavours match four emotional states:
+raspberry = angry/mad
+grape = sad
+mango = happy
+lime = surprised
+
+Dispense the bubbles to match their feelings.
+
+The tea colours match the source of their emotions:
+strawberry = random event (accident, shock, lotto win)
+coconut = work (job, study, boss)
+peach = personal (family, friends, close connections)
+matcha = activities (hobbies, wellbeing, health)
+
+Fill the cup with the correct tea.
+
+Each day a range of recurring characters come to your shop, from Easy Pete the super happy family man; Micah the schoolkid; Alex the twenty something with relationship problems, and others.
+
+1. In the early levels the key words will be highlighted to help you correctly identify the emotions.
+2. In the later levels you’ll have to read carefully to see how they feel and match their drinks.
+3. Towards the end of the game, it might be necessary to ask a question in order to find out how they feel.
