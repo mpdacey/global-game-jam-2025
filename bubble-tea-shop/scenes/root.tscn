@@ -70,8 +70,10 @@ max_value = 1.0
 step = 0.01
 value = 1.0
 
+[connection signal="day_changed" from="GameView" to="AudioNodes/MusicConductor" method="_set_day_music"]
 [connection signal="enter_prep_area" from="GameView" to="AudioNodes/MusicConductor" method="_enter_prep_station"]
 [connection signal="exit_prep_area" from="GameView" to="AudioNodes/MusicConductor" method="_exit_prep_station"]
+[connection signal="character_exited" from="GameView/CounterView/CounterTop/CharacterPortrait" to="GameView/AddBubbles/Nozzle/BubbleGenerator" method="clear_bubbles"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/PlayButton" to="GameView" method="start_game"]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/PlayButton" to="MainMenu" method="set_visible" binds= [false]]
 [connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/QuitButton" to="GameView" method="_on_quit_button_pressed"]

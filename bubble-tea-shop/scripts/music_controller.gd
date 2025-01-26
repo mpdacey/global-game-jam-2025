@@ -19,6 +19,9 @@ func _input(event):
 		_set_day_music(4)
 
 func _set_day_music(day_index: int):
+	if day_index % 2 == 1 || day_index == 0:
+		return
+	
 	var key = &"Early"
 	match (day_index):
 		2, 3:

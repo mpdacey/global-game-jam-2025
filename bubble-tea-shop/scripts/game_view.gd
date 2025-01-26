@@ -3,6 +3,7 @@ extends Node
 signal enter_prep_area
 signal exit_prep_area
 signal start_day(day: DayResource)
+signal day_changed(new_day: int)
 signal game_finished
 
 @export var days: Array[DayResource]
@@ -28,6 +29,7 @@ func load_next_day():
 		return
 	
 	start_day.emit(days[current_day])
+	day_changed.emit(current_day)
 	current_day += 1
 
 func _on_button_r_pressed() -> void:
