@@ -1,0 +1,11 @@
+~ start
+Alex: I have the best news to tell you!
+Alex: I had [color=#61d025]no idea this was coming! [/color]
+- Has your partner come home on time?
+	Alex: Not as of late.
+- What’s your news?
+	Alex: My partner has been working overtime.
+Alex: They’ve been saving up for a holiday.  
+Alex: We’re going to New Zealand in August!~
+
+=> END

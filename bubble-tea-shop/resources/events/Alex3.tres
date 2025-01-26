@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://bxid6dxub75vq"]
+
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_5asyf"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_amn3r"]
+[ext_resource type="Texture2D" uid="uid://c1ktwkqvkku8q" path="res://sprites/portraits/alex.png" id="2_qtj7m"]
+[ext_resource type="Resource" uid="uid://dmm7vwfinfaah" path="res://resources/dialogue/Alex3.dialogue" id="3_3ly2w"]
+
+[sub_resource type="Resource" id="Resource_t4ywd"]
+script = ExtResource("1_amn3r")
+flavour = 0
+ratio = 0.752
+
+[resource]
+script = ExtResource("1_5asyf")
+bubbles = SubResource("Resource_t4ywd")
+liquid = 0
+character_sprite = ExtResource("2_qtj7m")
+dialogue = ExtResource("3_3ly2w")

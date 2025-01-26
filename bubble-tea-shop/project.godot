@@ -44,6 +44,11 @@ test_customer_leave={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":76,"key_label":0,"unicode":108,"location":0,"echo":false,"script":null)
 ]
 }
+test_cup_fill={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)
+]
+}
 test_next_day={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":78,"key_label":0,"unicode":110,"location":0,"echo":false,"script":null)
@@ -52,7 +57,7 @@ test_next_day={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://resources/dialogue/test_dialogue_linear.dialogue", "res://resources/dialogue/test_dialogue_branching.dialogue", "res://resources/dialogue/MicahA.dialogue", "res://resources/dialogue/AlexB.dialogue", "res://resources/dialogue/EasyPeteA.dialogue", "res://resources/dialogue/Alex2.dialogue", "res://resources/dialogue/EasyPete2.dialogue", "res://resources/dialogue/Bodhi2.dialogue", "res://resources/dialogue/Micah2.dialogue")
+locale/translations_pot_files=PackedStringArray("res://resources/dialogue/test_dialogue_linear.dialogue", "res://resources/dialogue/test_dialogue_branching.dialogue", "res://resources/dialogue/Alex2.dialogue", "res://resources/dialogue/EasyPete2.dialogue", "res://resources/dialogue/Micah2.dialogue", "res://resources/dialogue/EasyPete1.dialogue", "res://resources/dialogue/EasyPete3.dialogue", "res://resources/dialogue/Alex3.dialogue", "res://resources/dialogue/Logan3.dialogue", "res://resources/dialogue/Quinn3.dialogue", "res://resources/dialogue/EasyPete4.dialogue", "res://resources/dialogue/Alex4.dialogue", "res://resources/dialogue/Logan4.dialogue", "res://resources/dialogue/EasyPete5.dialogue", "res://resources/dialogue/Alex5.dialogue", "res://resources/dialogue/Kai3.dialogue", "res://resources/dialogue/Kai2.dialogue", "res://resources/dialogue/Micah5.dialogue", "res://resources/dialogue/Logan5.dialogue", "res://resources/dialogue/Kai5.dialogue")
 
 [rendering]
 

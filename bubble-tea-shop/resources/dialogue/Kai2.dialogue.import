@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://ba34jdbkr257c"
+path="res://.godot/imported/Kai2.dialogue-2fac6bec6dcdc78e0c7f1e668aa233cb.tres"
+
+[deps]
+
+source_file="res://resources/dialogue/Kai2.dialogue"
+dest_files=["res://.godot/imported/Kai2.dialogue-2fac6bec6dcdc78e0c7f1e668aa233cb.tres"]
+
+[params]
+
+defaults=true
