@@ -28,6 +28,9 @@ func _set_day_music(day_index: int):
 	
 	_interactive_music.switch_to_clip_by_name(key)
 
+func _set_music_volume(value: float):
+	AudioServer.set_bus_volume_db(0,remap((log(value)+2)*0.5, 0, 1, -80, 0))
+
 func _enter_prep_station():
 	percussion_animator.play("fade_in")
 

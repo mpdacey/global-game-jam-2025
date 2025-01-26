@@ -43,3 +43,6 @@ func _on_button_l_pressed() -> void:
 		animationcontroller.play_backwards("camera_pan")
 		isRight = false
 		exit_prep_area.emit()
+
+func _on_quit_button_pressed():
+	get_tree().quit()

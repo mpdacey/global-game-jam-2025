@@ -1,15 +1,85 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn18bmf74fpgx"]
+[gd_scene load_steps=4 format=3 uid="uid://cn18bmf74fpgx"]
 
 [ext_resource type="PackedScene" uid="uid://b7xkr6jax36mq" path="res://scenes/game_view.tscn" id="1_xfveh"]
 [ext_resource type="PackedScene" uid="uid://cr4y2rkn2fckg" path="res://scenes/music_conductor.tscn" id="2_3dua3"]
+[ext_resource type="Theme" uid="uid://guowbt7h2io7" path="res://themes/balloon_theme.tres" id="3_7qmr1"]
 
 [node name="Root" type="Node"]
 
 [node name="GameView" parent="." instance=ExtResource("1_xfveh")]
 
+[node name="Button-R" parent="GameView/ConvoView" index="1"]
+visible = false
+
 [node name="AudioNodes" type="Node" parent="."]
 
 [node name="MusicConductor" parent="AudioNodes" instance=ExtResource("2_3dua3")]
 
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 80.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 179.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PlayButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_7qmr1")
+theme_override_font_sizes/font_size = 32
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_7qmr1")
+theme_override_font_sizes/font_size = 32
+text = "Quit Game
+"
+
+[node name="HSeparator" type="HSeparator" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="VolumeSlider" type="HSlider" parent="MainMenu/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
 [connection signal="enter_prep_area" from="GameView" to="AudioNodes/MusicConductor" method="_enter_prep_station"]
 [connection signal="exit_prep_area" from="GameView" to="AudioNodes/MusicConductor" method="_exit_prep_station"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/PlayButton" to="GameView" method="start_game"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/PlayButton" to="GameView/ConvoView/Button-R" method="set_visible" binds= [true]]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/PlayButton" to="MainMenu" method="set_visible" binds= [false]]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/QuitButton" to="GameView" method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="MainMenu/MarginContainer/VBoxContainer/MarginContainer/VolumeSlider" to="AudioNodes/MusicConductor" method="_set_music_volume"]
+
+[editable path="GameView"]
+[editable path="GameView/PrepView"]
