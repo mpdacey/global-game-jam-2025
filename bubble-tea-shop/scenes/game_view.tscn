@@ -18,6 +18,7 @@
 [ext_resource type="Resource" path="res://resources/days/day_5.tres" id="7_lr78g"]
 [ext_resource type="PackedScene" uid="uid://ceuunfs0gh6vt" path="res://scenes/add_bubbles.tscn" id="7_xvir2"]
 [ext_resource type="Script" path="res://scripts/character_event_controller.gd" id="9_yaugl"]
+[ext_resource type="Texture2D" uid="uid://vpulfbkpgijb" path="res://sprites/wooden_board_no_bevel.png" id="14_trxkh"]
 
 [sub_resource type="Animation" id="Animation_yw8vb"]
 length = 0.001
@@ -54,9 +55,6 @@ _data = {
 "RESET": SubResource("Animation_yw8vb"),
 "camera_pan": SubResource("Animation_iue0g")
 }
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kahqx"]
-size = Vector2(240, 360)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -130,9 +128,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -186.405
+offset_left = -178.9
 offset_top = -329.0
-offset_right = 77.595
+offset_right = 85.1
 offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -149,9 +147,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -566.325
+offset_left = -572.42
 offset_top = -329.0
-offset_right = -302.325
+offset_right = -308.42
 offset_bottom = -65.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -196,10 +194,9 @@ texture_filter = 1
 texture = ExtResource("5_crb3j")
 
 [node name="ConvoView" type="Sprite2D" parent="."]
-modulate = Color(0, 0.888248, 0.275956, 1)
 texture_filter = 1
 position = Vector2(200, 0)
-texture = SubResource("PlaceholderTexture2D_kahqx")
+texture = ExtResource("14_trxkh")
 
 [node name="DialogueNodes" type="Node" parent="ConvoView"]
 

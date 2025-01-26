@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://ba4qo8wmogdar"]
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://56mscijdg6xn"]
 
 [ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_838yw"]
 [ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_fihpl"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://b8ecm5jhwdqpq"]
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://naqlu0cek2gf"]
 
 [ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_h3j08"]
 [ext_resource type="Texture2D" uid="uid://4l3lttpqqc0i" path="res://sprites/portraits/kai.png" id="2_gwjx3"]

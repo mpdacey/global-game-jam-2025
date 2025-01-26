@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://ohrxewokveou"]
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://g3mpbi3bx8qi"]
 
 [ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_y5l2h"]
 [ext_resource type="Texture2D" uid="uid://c1ktwkqvkku8q" path="res://sprites/portraits/alex.png" id="2_j16jc"]
