@@ -149,6 +149,7 @@ response_template = NodePath("ResponseExample")
 [node name="ResponseExample" type="Button" parent="2DPosition/Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu"]
 layout_mode = 2
 text = "Response example"
+autowrap_mode = 3
 
 [connection signal="gui_input" from="2DPosition/Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="2DPosition/Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
