@@ -18,6 +18,7 @@ var amount_added = 0			#Amount added with each button press; is reset with each 
 var liquid_shared_material: ShaderMaterial = preload("res://materials/liquid_material.tres")
 
 var liquid_cap = 0
+var bubble_capacity = 0
 
 var _lid_placed: bool = false
 
@@ -53,7 +54,8 @@ func increment_slider(id) -> void:
 	elif id == 1 and isHeld and remaining_capacity > 0:
 		liquidSlider.value += 1
 		remaining_capacity -= 1
-		liquid_shared_material.set_shader_parameter("Alpha", liquidSlider.value - liquid_cap)
+		print(1 - remaining_capacity / liquid_cap)
+		liquid_shared_material.set_shader_parameter("Alpha", 1.0 - float(remaining_capacity) / float(liquid_cap))
 	print("Remaining capacity is " + str(remaining_capacity))
 
 func hand_drink_to_customer():
@@ -62,25 +64,27 @@ func hand_drink_to_customer():
 
 func reset_cup():
 	_lid_placed = false
+	remaining_capacity = 100
 	liquid_shared_material.set_shader_parameter("Alpha", 0)
 	$"Prep-station"/ButtonPanels/AnimationPlayer.play("RESET")
 
-func _on_button_button_down(id) -> void:
+func _on_button_button_down(id, colour_id = 0) -> void:
 	#Set held boolean to true
 	isHeld = true
 	button_index = id
 	if id == 1:
-		liquid_shared_material.set_shader_parameter("LiquidColour", liquid_colors[id])
+		liquid_shared_material.set_shader_parameter("LiquidColour", liquid_colors[colour_id])
 
 func _on_button_button_up(id) -> void:
 	#Set held boolean to false, decrement remaining capacity and reset added amount
 	isHeld = false
 	if id == 0:
 		$"Prep-station"/ButtonPanels/AnimationPlayer.play("Buttons_Up")
+		bubble_capacity = amount_added
 	elif id == 1:
 		$"Prep-station"/ButtonPanels/AnimationPlayer.play("Buttons_End")
 		_lid_placed = true
-		
+	
 	if amount_added > 0:
 		remaining_capacity -= amount_added
 		amount_added = 0
