@@ -5,4 +5,4 @@
 [resource]
 shader = ExtResource("1_6ny4v")
 shader_parameter/LiquidColour = Color(0.96, 0.4224, 0.85248, 1)
-shader_parameter/Alpha = 1.0
+shader_parameter/Alpha = 0.0

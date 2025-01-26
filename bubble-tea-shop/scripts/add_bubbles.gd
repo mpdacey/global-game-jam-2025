@@ -17,12 +17,15 @@ var remaining_capacity = 0		#Total remaining capacity of the slider
 var amount_added = 0			#Amount added with each button press; is reset with each button release
 var liquid_shared_material: ShaderMaterial = preload("res://materials/liquid_material.tres")
 
+var liquid_cap = 0
+
 var _lid_placed: bool = false
 
 func _ready():
 	bubble_request = randi_range(15, bubbleMax)
 	remaining_capacity = 100
-	liquid_shared_material.set_shader_parameter("Alpha", 15)
+	liquid_cap = liquidSlider.max_value
+	liquid_shared_material.set_shader_parameter("Alpha", 0)
 	
 	print("I would like " + str(bubble_request) + " bubbles please.")
 
@@ -50,7 +53,7 @@ func increment_slider(id) -> void:
 	elif id == 1 and isHeld and remaining_capacity > 0:
 		liquidSlider.value += 1
 		remaining_capacity -= 1
-		liquid_shared_material.set_shader_parameter("Alpha", liquidSlider.value)
+		liquid_shared_material.set_shader_parameter("Alpha", liquidSlider.value - liquid_cap)
 	print("Remaining capacity is " + str(remaining_capacity))
 
 func hand_drink_to_customer():
@@ -79,3 +82,4 @@ func _on_button_button_up(id) -> void:
 	if amount_added > 0:
 		remaining_capacity -= amount_added
 		amount_added = 0
+	liquid_cap = remaining_capacity
