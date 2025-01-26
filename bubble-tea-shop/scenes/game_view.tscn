@@ -1,11 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://b7xkr6jax36mq"]
+[gd_scene load_steps=22 format=3 uid="uid://b7xkr6jax36mq"]
 
 [ext_resource type="Script" path="res://scripts/game_view.gd" id="1_6q6dj"]
 [ext_resource type="Texture2D" uid="uid://dfo2ndmjqtyuu" path="res://sprites/sources/Arrow.png" id="1_7q07m"]
 [ext_resource type="Script" path="res://scripts/dialogue_controller.gd" id="2_0r6f7"]
 [ext_resource type="Script" path="res://scripts/day_controller.gd" id="2_6rhaf"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_bun35"]
-[ext_resource type="Resource" uid="uid://cv2va71uu54tx" path="res://resources/days/Day3.tres" id="3_n23l6"]
 [ext_resource type="Texture2D" uid="uid://d4np0ovjdqsbm" path="res://sprites/enviroment/Counter.png" id="3_qg7dw"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_5bukm"]
 [ext_resource type="Script" path="res://scripts/custom_button/balloon.gd" id="5_4bh7q"]
@@ -158,7 +157,6 @@ icon_alignment = 1
 [node name="DayController" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_6rhaf")
-current_day = ExtResource("3_n23l6")
 
 [node name="CharacterEventController" type="Node" parent="."]
 unique_name_in_owner = true
@@ -294,11 +292,17 @@ script = ExtResource("5_4bh7q")
 position = Vector2(385, 120)
 
 [connection signal="pressed" from="SceneButtons/Button-L" to="." method="_on_button_l_pressed"]
+[connection signal="pressed" from="SceneButtons/Button-L" to="AddBubbles" method="hand_drink_to_customer"]
 [connection signal="pressed" from="SceneButtons/Button-R" to="." method="_on_button_r_pressed"]
 [connection signal="character_entered" from="CounterView/CounterTop/CharacterPortrait" to="CharacterEventController" method="display_dialogue"]
+[connection signal="character_entered" from="CounterView/CounterTop/CharacterPortrait" to="SceneButtons/Button-L" method="set_visible" binds= [true]]
+[connection signal="character_entered" from="CounterView/CounterTop/CharacterPortrait" to="SceneButtons/Button-R" method="set_visible" binds= [true]]
 [connection signal="character_exited" from="CounterView/CounterTop/CharacterPortrait" to="DayController" method="play_next_event"]
+[connection signal="character_exited" from="CounterView/CounterTop/CharacterPortrait" to="AddBubbles" method="reset_cup"]
+[connection signal="character_exited" from="CounterView/CounterTop/CharacterPortrait" to="AddBubbles/Nozzle/BubbleGenerator" method="clear_bubbles"]
 [connection signal="character_is_exiting" from="CounterView/CounterTop/CharacterPortrait" to="ConvoView/DialogueNodes/DialogueController" method="clear_dialogue"]
 [connection signal="gui_input" from="ConvoView/DialogueNodes/2DPosition/Balloon" to="ConvoView/DialogueNodes/BalloonListController" method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="ConvoView/DialogueNodes/2DPosition/Balloon/MarginContainer/BallonListContainer/Responses/ResponsesMenu" to="ConvoView/DialogueNodes/BalloonListController" method="_on_responses_menu_response_selected"]
+[connection signal="timeout" from="AddBubbles/CustomerHandoutTimer" to="CounterView/CounterTop/CharacterPortrait" method="exit_customer"]
 
 [editable path="AddBubbles"]

@@ -1,11 +1,14 @@
 extends Node2D
 
+signal handing_drink_to_customer
+
 @export var tea_sprite: Sprite2D
 @export var liquid_colors: Array[Color]
 
 @onready var liquidSlider = $LiquidSlider
 @onready var bubbleCollection = $Nozzle/BubbleGenerator/BubbleCollection
 @onready var bubbleMax = $Nozzle/BubbleGenerator.BUBBLE_MAX_COUNT
+@onready var customer_handout_timer = $CustomerHandoutTimer
 
 var isHeld = false
 var button_index = 0			#Index of the button that is being held
@@ -14,12 +17,21 @@ var remaining_capacity = 0		#Total remaining capacity of the slider
 var amount_added = 0			#Amount added with each button press; is reset with each button release
 var liquid_shared_material: ShaderMaterial = preload("res://materials/liquid_material.tres")
 
+var _lid_placed: bool = false
+
 func _ready():
 	bubble_request = randi_range(15, bubbleMax)
 	remaining_capacity = 100
 	liquid_shared_material.set_shader_parameter("Alpha", 15)
 	
 	print("I would like " + str(bubble_request) + " bubbles please.")
+
+func _input(event):
+	if not OS.is_debug_build():
+		return
+	
+	if event.is_action_pressed("test_cup_fill"):
+		_lid_placed = true
 
 func _process(delta):
 	increment_slider(button_index)
@@ -41,6 +53,14 @@ func increment_slider(id) -> void:
 		liquid_shared_material.set_shader_parameter("Alpha", liquidSlider.value)
 	print("Remaining capacity is " + str(remaining_capacity))
 
+func hand_drink_to_customer():
+	if _lid_placed:
+		handing_drink_to_customer.emit()
+
+func reset_cup():
+	_lid_placed = false
+	liquid_shared_material.set_shader_parameter("Alpha", 0)
+
 func _on_button_button_down(id) -> void:
 	#Set held boolean to true
 	isHeld = true
@@ -59,4 +79,3 @@ func _on_button_button_up(id) -> void:
 	if amount_added > 0:
 		remaining_capacity -= amount_added
 		amount_added = 0
-	
