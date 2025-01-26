@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://b0wvf8vsevdxi"
+path="res://.godot/imported/Logan5.dialogue-58efdebf0e0ac21bbf01733875bc0771.tres"
+
+[deps]
+
+source_file="res://resources/dialogue/Logan5.dialogue"
+dest_files=["res://.godot/imported/Logan5.dialogue-58efdebf0e0ac21bbf01733875bc0771.tres"]
+
+[params]
+
+defaults=true

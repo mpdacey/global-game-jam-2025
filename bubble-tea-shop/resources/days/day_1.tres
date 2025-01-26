@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="DayResource" load_steps=4 format=3 uid="uid://dt4cpyiee6j1q"]
+[gd_resource type="Resource" script_class="DayResource" load_steps=4 format=3 uid="uid://bhiim2bjuwnw2"]
 
 [ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_4qt7s"]
-[ext_resource type="Resource" uid="uid://dqsxyu5u85qej" path="res://resources/events/EasyPeteA.tres" id="2_oqpep"]
 [ext_resource type="Script" path="res://scripts/resource_scripts/day_resource_script.gd" id="2_vpn6j"]
+[ext_resource type="Resource" uid="uid://b5l5sd8gpqns6" path="res://resources/events/EasyPete1.tres" id="2_xqimp"]
 
 [resource]
 script = ExtResource("2_vpn6j")
-events = Array[ExtResource("1_4qt7s")]([ExtResource("2_oqpep")])
+events = Array[ExtResource("1_4qt7s")]([ExtResource("2_xqimp")])

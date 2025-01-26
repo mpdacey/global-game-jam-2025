@@ -1,12 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://cn18bmf74fpgx"]
 
 [ext_resource type="PackedScene" uid="uid://b7xkr6jax36mq" path="res://scenes/game_view.tscn" id="1_xfveh"]
-[ext_resource type="AudioStream" uid="uid://bsb0mma1qnwna" path="res://sound/day_themes/day_1_2_theme.mp3" id="3_uiwd1"]
+[ext_resource type="PackedScene" path="res://scenes/music_conductor.tscn" id="2_3dua3"]
 
 [node name="Root" type="Node"]
 
 [node name="GameView" parent="." instance=ExtResource("1_xfveh")]
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_uiwd1")
-autoplay = true
+[node name="AudioNodes" type="Node" parent="."]
+
+[node name="MusicConductor" parent="AudioNodes" instance=ExtResource("2_3dua3")]
+
+[connection signal="enter_prep_area" from="GameView" to="AudioNodes/MusicConductor" method="_enter_prep_station"]
+[connection signal="exit_prep_area" from="GameView" to="AudioNodes/MusicConductor" method="_exit_prep_station"]

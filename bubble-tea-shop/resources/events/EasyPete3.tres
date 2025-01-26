@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=6 format=3 uid="uid://c0dqorjc5ofly"]
+
+[ext_resource type="Script" path="res://scripts/resource_scripts/bubble_ratio_resource_script.gd" id="1_khnu6"]
+[ext_resource type="Texture2D" uid="uid://dnb7dik7nd2mo" path="res://sprites/portraits/easy_pete.png" id="2_otpol"]
+[ext_resource type="Resource" uid="uid://bi64msrmyqyye" path="res://resources/dialogue/EasyPete3.dialogue" id="3_hy5a0"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="4_dxu5i"]
+
+[sub_resource type="Resource" id="Resource_duiai"]
+script = ExtResource("1_khnu6")
+flavour = 0
+ratio = 1.0
+
+[resource]
+script = ExtResource("4_dxu5i")
+bubbles = SubResource("Resource_duiai")
+liquid = 0
+character_sprite = ExtResource("2_otpol")
+dialogue = ExtResource("3_hy5a0")

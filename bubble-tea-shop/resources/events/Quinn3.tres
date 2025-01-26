@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterEventResource" load_steps=4 format=3 uid="uid://ddhdl4be46rfw"]
+
+[ext_resource type="Resource" uid="uid://hde0exfk0vcs" path="res://resources/dialogue/Quinn3.dialogue" id="1_8ihy8"]
+[ext_resource type="Texture2D" uid="uid://b6gk4fa2oncnx" path="res://sprites/portraits/quinn.png" id="1_fvmd6"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_w3yu8"]
+
+[resource]
+script = ExtResource("1_w3yu8")
+liquid = 1
+character_sprite = ExtResource("1_fvmd6")
+dialogue = ExtResource("1_8ihy8")

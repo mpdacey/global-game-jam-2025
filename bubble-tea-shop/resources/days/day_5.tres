@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DayResource" load_steps=8 format=3 uid="uid://cav0e13oevnu"]
+
+[ext_resource type="Script" path="res://scripts/resource_scripts/character_event_resource_script.gd" id="1_bl4jn"]
+[ext_resource type="Resource" uid="uid://b5jkapktbdkc4" path="res://resources/events/EasyPete5.tres" id="2_tv5jo"]
+[ext_resource type="Resource" uid="uid://w6dx7fr4tmne" path="res://resources/events/Alex5.tres" id="3_ppaw2"]
+[ext_resource type="Resource" uid="uid://jd67pvtrrlya" path="res://resources/events/Kai5.tres" id="4_vsaov"]
+[ext_resource type="Resource" uid="uid://bg5h6lk7d3lnu" path="res://resources/events/Logan5.tres" id="5_6yb73"]
+[ext_resource type="Resource" uid="uid://ddgkxq1wu3e68" path="res://resources/events/Micah5.tres" id="6_d3gj4"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/day_resource_script.gd" id="7_uj331"]
+
+[resource]
+script = ExtResource("7_uj331")
+events = Array[ExtResource("1_bl4jn")]([ExtResource("2_tv5jo"), ExtResource("3_ppaw2"), ExtResource("4_vsaov"), ExtResource("5_6yb73"), ExtResource("6_d3gj4")])

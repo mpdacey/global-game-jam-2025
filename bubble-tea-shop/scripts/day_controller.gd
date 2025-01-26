@@ -10,6 +10,11 @@ func _input(event):
 	if event.is_action_pressed("test_proceed_day"):
 		play_next_event()
 
+func set_day(day):
+	current_day = day
+	_current_event_index = 0
+	play_next_event()
+
 func play_next_event():
 	if _current_event_index >= current_day.events.size():
 		day_completed.emit()
