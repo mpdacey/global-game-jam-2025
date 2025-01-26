@@ -1,13 +1,16 @@
-[gd_scene load_steps=23 format=3 uid="uid://b7xkr6jax36mq"]
+[gd_scene load_steps=26 format=3 uid="uid://b7xkr6jax36mq"]
 
 [ext_resource type="Script" path="res://scripts/game_view.gd" id="1_6q6dj"]
 [ext_resource type="Texture2D" uid="uid://dfo2ndmjqtyuu" path="res://sprites/sources/Arrow.png" id="1_7q07m"]
 [ext_resource type="Script" path="res://scripts/dialogue_controller.gd" id="2_0r6f7"]
+[ext_resource type="Script" path="res://scripts/resource_scripts/day_resource_script.gd" id="2_3jffu"]
 [ext_resource type="Script" path="res://scripts/day_controller.gd" id="2_6rhaf"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="3_bun35"]
-[ext_resource type="Resource" uid="uid://cv2va71uu54tx" path="res://resources/days/Day3.tres" id="3_n23l6"]
+[ext_resource type="Resource" uid="uid://dt4cpyiee6j1q" path="res://resources/days/day_1.tres" id="3_dqn5v"]
+[ext_resource type="Resource" uid="uid://6tsmlfpyfgnp" path="res://resources/days/Day3.tres" id="3_n23l6"]
 [ext_resource type="Texture2D" uid="uid://d4np0ovjdqsbm" path="res://sprites/enviroment/Counter.png" id="3_qg7dw"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="4_5bukm"]
+[ext_resource type="Resource" uid="uid://cfsq4m4g8w7kj" path="res://resources/days/day_2.tres" id="4_dn03x"]
 [ext_resource type="Script" path="res://scripts/custom_button/balloon.gd" id="5_4bh7q"]
 [ext_resource type="Texture2D" uid="uid://btcb1e0jt5h0r" path="res://sprites/enviroment/Background.png" id="5_crb3j"]
 [ext_resource type="PackedScene" uid="uid://dqyypyolrrshx" path="res://scenes/character_portrait.tscn" id="6_tr44w"]
@@ -114,6 +117,7 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
 [node name="GameView" type="Node"]
 script = ExtResource("1_6q6dj")
+days = Array[ExtResource("2_3jffu")]([ExtResource("3_dqn5v"), ExtResource("4_dn03x"), ExtResource("3_n23l6")])
 
 [node name="DayController" type="Node" parent="."]
 unique_name_in_owner = true
@@ -352,6 +356,7 @@ icon = ExtResource("1_7q07m")
 flat = true
 icon_alignment = 1
 
+[connection signal="start_day" from="." to="DayController" method="set_day"]
 [connection signal="character_entered" from="CounterView/CounterTop/CharacterPortrait" to="CharacterEventController" method="display_dialogue"]
 [connection signal="character_exited" from="CounterView/CounterTop/CharacterPortrait" to="DayController" method="play_next_event"]
 [connection signal="character_is_exiting" from="CounterView/CounterTop/CharacterPortrait" to="ConvoView/DialogueNodes/DialogueController" method="clear_dialogue"]
